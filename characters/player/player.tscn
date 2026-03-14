@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bafd1m1yjdaij"]
+
+[ext_resource type="Texture2D" uid="uid://dwgri5hlvjl84" path="res://characters/player/slime_body.png" id="1_508ok"]
+[ext_resource type="Script" uid="uid://b8mmal8gm1j25" path="res://characters/player/Player.cs" id="1_xxgcw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxgcw"]
+radius = 13.0
+height = 108.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1791503502]
+script = ExtResource("1_xxgcw")
+
+[node name="SlimeBody" type="Sprite2D" parent="." unique_id=1833845257]
+position = Vector2(0, -45)
+texture = ExtResource("1_508ok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716405908]
+position = Vector2(0, -13)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xxgcw")

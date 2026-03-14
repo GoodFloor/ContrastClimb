@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c2bx8l53qnlcq"]
+
+[ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
+[ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platform/platform.tscn" id="2_keei5"]
+
+[node name="DemoLevel" type="Node2D" unique_id=659773585]
+
+[node name="Player" parent="." unique_id=1791503502 instance=ExtResource("1_u4xt3")]
+position = Vector2(741, 594)
+
+[node name="SimplePlatform" parent="." unique_id=1623420286 instance=ExtResource("2_keei5")]
+position = Vector2(-1, 604)
+
+[node name="SimplePlatform2" parent="." unique_id=1322897524 instance=ExtResource("2_keei5")]
+position = Vector2(577, 606)
+
+[node name="SimplePlatform3" parent="." unique_id=1959898272 instance=ExtResource("2_keei5")]
+visible = false
+position = Vector2(120, 446)
+collision_layer = 2
+
+[node name="SimplePlatform4" parent="." unique_id=1324595040 instance=ExtResource("2_keei5")]
+visible = false
+position = Vector2(611, 445)
+collision_layer = 2
+
+[node name="SimplePlatform5" parent="." unique_id=900360336 instance=ExtResource("2_keei5")]
+position = Vector2(78, 287)
+
+[node name="SimplePlatform6" parent="." unique_id=634431412 instance=ExtResource("2_keei5")]
+position = Vector2(640, 284)
+
+[node name="SimplePlatform7" parent="." unique_id=77844996 instance=ExtResource("2_keei5")]
+visible = false
+position = Vector2(224, 139)
+collision_layer = 2
+
+[node name="SimplePlatform8" parent="." unique_id=1333507091 instance=ExtResource("2_keei5")]
+visible = false
+position = Vector2(775, 139)
+collision_layer = 2
