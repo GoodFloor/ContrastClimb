@@ -2,40 +2,69 @@
 
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
 [ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platform/platform.tscn" id="2_keei5"]
+[ext_resource type="Texture2D" uid="uid://q6lmvocakwcm" path="res://textures/button_left.png" id="3_keei5"]
+[ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
+[ext_resource type="Texture2D" uid="uid://bk8tx11t8knf3" path="res://textures/button_jump.png" id="5_pjwgr"]
+[ext_resource type="Texture2D" uid="uid://bmfxxebhvo2f4" path="res://textures/button_right.png" id="6_a3way"]
 
 [node name="DemoLevel" type="Node2D" unique_id=659773585]
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("1_u4xt3")]
-position = Vector2(741, 594)
+position = Vector2(289, 651)
+scale = Vector2(0.5, 0.5)
 
 [node name="SimplePlatform" parent="." unique_id=1623420286 instance=ExtResource("2_keei5")]
-position = Vector2(-1, 604)
+position = Vector2(0, 647)
 
 [node name="SimplePlatform2" parent="." unique_id=1322897524 instance=ExtResource("2_keei5")]
-position = Vector2(577, 606)
+position = Vector2(260, 652)
 
 [node name="SimplePlatform3" parent="." unique_id=1959898272 instance=ExtResource("2_keei5")]
 visible = false
-position = Vector2(120, 446)
+position = Vector2(40, 520)
 collision_layer = 2
 
 [node name="SimplePlatform4" parent="." unique_id=1324595040 instance=ExtResource("2_keei5")]
 visible = false
-position = Vector2(611, 445)
+position = Vector2(177, 519)
 collision_layer = 2
 
 [node name="SimplePlatform5" parent="." unique_id=900360336 instance=ExtResource("2_keei5")]
-position = Vector2(78, 287)
+position = Vector2(1, 377)
 
 [node name="SimplePlatform6" parent="." unique_id=634431412 instance=ExtResource("2_keei5")]
-position = Vector2(640, 284)
+position = Vector2(260, 378)
 
 [node name="SimplePlatform7" parent="." unique_id=77844996 instance=ExtResource("2_keei5")]
 visible = false
-position = Vector2(224, 139)
+position = Vector2(216, 218)
 collision_layer = 2
 
 [node name="SimplePlatform8" parent="." unique_id=1333507091 instance=ExtResource("2_keei5")]
 visible = false
-position = Vector2(775, 139)
+position = Vector2(259, 80)
 collision_layer = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=924156422]
+position = Vector2(3, 674)
+scale = Vector2(0.61, 0.61)
+texture_normal = ExtResource("3_keei5")
+action = "move_left"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=142068646]
+position = Vector2(127, 717)
+scale = Vector2(0.53499997, 0.40000015)
+texture_normal = ExtResource("4_jo783")
+action = "switch_color"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="." unique_id=1923684313]
+position = Vector2(127.00001, 677)
+scale = Vector2(0.5399999, 0.19500007)
+texture_normal = ExtResource("5_pjwgr")
+action = "jump"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="." unique_id=1959557536]
+position = Vector2(237, 677)
+scale = Vector2(0.61, 0.61)
+texture_normal = ExtResource("6_a3way")
+action = "move_right"

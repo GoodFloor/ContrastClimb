@@ -15,6 +15,14 @@ run/main_scene="uid://c2bx8l53qnlcq"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=360
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
 [dotnet]
 
 project/assembly_name="ContrastClimb"
@@ -45,6 +53,10 @@ switch_color={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -53,3 +65,4 @@ switch_color={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

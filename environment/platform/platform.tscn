@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://chr0d2sq1f7rc" path="res://environment/platform/Platform.cs" id="1_0l4sw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fntbx"]
-size = Vector2(400, 40)
+size = Vector2(100, 25)
 
 [node name="SimplePlatform" type="StaticBody2D" unique_id=1623420286]
 script = ExtResource("1_0l4sw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=469393923]
-offset_right = 400.0
-offset_bottom = 40.0
+offset_right = 100.0
+offset_bottom = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=413099685]
-position = Vector2(200, 20)
+position = Vector2(50, 12.5)
 shape = SubResource("RectangleShape2D_fntbx")
