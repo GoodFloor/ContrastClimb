@@ -17,7 +17,6 @@ public partial class Platform : StaticBody2D
         base._PhysicsProcess(delta);
         if (Input.IsActionJustPressed("switch_color"))
         {
-            GD.Print("switch_color");
             Visible = !Visible;
         }
     }

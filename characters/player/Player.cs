@@ -28,25 +28,27 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    // Called once on each physics tick
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
         float df = (float)delta;
         _velocity.Y = Velocity.Y;
-        if (Input.IsActionPressed("move_right"))
-        {
-            _velocity.X = MovementSpeed;
-        }
-        else if (Input.IsActionPressed("move_left"))
-        {
-            _velocity.X = -MovementSpeed;
-        }
-        else
-        {
-            _velocity.X = 0f;
-        }
+        // if (Input.IsActionPressed("move_right"))
+        // {
+        //     _velocity.X = MovementSpeed;
+        // }
+        // else if (Input.IsActionPressed("move_left"))
+        // {
+        //     _velocity.X = -MovementSpeed;
+        // }
+        // else
+        // {
+        //     _velocity.X = 0f;
+        // }
+        GlobalPosition = new Vector2(GetViewport().GetMousePosition().X, GlobalPosition.Y);
 
-        if (Input.IsActionJustPressed("jump") && _velocity.Y == 0f)
+        if (_velocity.Y == 0f)
         {
             _velocity.Y = df * -JumpSpeed;
         }
