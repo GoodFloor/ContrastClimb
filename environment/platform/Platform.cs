@@ -9,7 +9,10 @@ public partial class Platform : StaticBody2D
     public override void _Ready()
     {
         if (_isWhite)
+        {
             Visible = false;
+            CollisionLayer = 2;
+        }
     }
     
     public override void _PhysicsProcess(double delta)

@@ -18,11 +18,11 @@ position = Vector2(260, 652)
 
 [node name="SimplePlatform3" parent="." unique_id=1959898272 instance=ExtResource("2_keei5")]
 position = Vector2(40, 520)
-collision_layer = 2
+_isWhite = true
 
 [node name="SimplePlatform4" parent="." unique_id=1324595040 instance=ExtResource("2_keei5")]
 position = Vector2(177, 519)
-collision_layer = 2
+_isWhite = true
 
 [node name="SimplePlatform5" parent="." unique_id=900360336 instance=ExtResource("2_keei5")]
 position = Vector2(1, 377)
@@ -32,11 +32,11 @@ position = Vector2(260, 378)
 
 [node name="SimplePlatform7" parent="." unique_id=77844996 instance=ExtResource("2_keei5")]
 position = Vector2(216, 218)
-collision_layer = 2
+_isWhite = true
 
 [node name="SimplePlatform8" parent="." unique_id=1333507091 instance=ExtResource("2_keei5")]
 position = Vector2(259, 80)
-collision_layer = 2
+_isWhite = true
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=142068646]
 position = Vector2(2.3841858e-07, 727)
