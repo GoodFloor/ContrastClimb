@@ -34,19 +34,20 @@ public partial class Player : CharacterBody2D
         base._PhysicsProcess(delta);
         float df = (float)delta;
         _velocity.Y = Velocity.Y;
-        // if (Input.IsActionPressed("move_right"))
-        // {
-        //     _velocity.X = MovementSpeed;
-        // }
-        // else if (Input.IsActionPressed("move_left"))
-        // {
-        //     _velocity.X = -MovementSpeed;
-        // }
-        // else
-        // {
-        //     _velocity.X = 0f;
-        // }
+        
         GlobalPosition = new Vector2(GetViewport().GetMousePosition().X, GlobalPosition.Y);
+        if (Input.GetGravity().X < 0f)
+        {
+            _velocity.X = MovementSpeed * Input.GetGravity().X / 5f;
+        }
+        else if (Input.GetGravity().X > 0f)
+        {
+            _velocity.X = MovementSpeed * Input.GetGravity().X / 5f;
+        }
+        else
+        {
+            _velocity.X = 0f;
+        }
 
         if (_velocity.Y == 0f)
         {
