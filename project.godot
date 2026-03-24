@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ContrastClimb"
-run/main_scene="uid://c2bx8l53qnlcq"
+run/main_scene="uid://b6xb4ktsa5yh4"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://bv8efs145et0e"
 
 [display]
 
