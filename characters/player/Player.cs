@@ -1,5 +1,6 @@
 using Godot;
 using ContrastClimb.characters.player;
+using ContrastClimb.utils;
 
 public partial class Player : CharacterBody2D
 {
@@ -42,14 +43,12 @@ public partial class Player : CharacterBody2D
     {
         base._Ready();
 
-        if (Global.Config.Steering == "tilt")
+        _movementHandler = Global.Config.Steering switch
         {
-            _movementHandler = new TiltMovement(this);
-        }
-        else
-        {
-            _movementHandler = new DragMovement(this);
-        }
-        
+            MovementType.Tilt => new TiltMovement(this),
+            MovementType.Drag => new DragMovement(this),
+            MovementType.Keyboard => new KeyboardMovement(this),
+            _ => null
+        };
     }
 }
