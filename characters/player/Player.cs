@@ -1,14 +1,14 @@
 using Godot;
-using System;
+using ContrastClimb.characters.player;
 
 public partial class Player : CharacterBody2D
 {
     private Vector2 _velocity;
     private const float Gravity = 2048f;
     private const float JumpSpeed = 50000f;
-    private const float MovementSpeed = 500f;
-    private const uint ColorSwitchMask = 1 + 2;     // 1 and 2 are black and white platforms, 4 are persistent platforms
+    private const uint ColorSwitchMask = 1 + 2;     // This is a bit mask: 1 and 2 are black and white platforms, 4 are persistent platforms
     private uint _currentColor = 1 + 4;
+    private HorizontalMovement _horizontalMovement;
 
     public override void _Input(InputEvent @event)
     {
@@ -26,20 +26,7 @@ public partial class Player : CharacterBody2D
         base._PhysicsProcess(delta);
         float df = (float)delta;
         _velocity.Y = Velocity.Y;
-        
-        GlobalPosition = new Vector2(GetViewport().GetMousePosition().X, GlobalPosition.Y);
-        if (Input.GetGravity().X < 0f)
-        {
-            _velocity.X = MovementSpeed * Input.GetGravity().X / 5f;
-        }
-        else if (Input.GetGravity().X > 0f)
-        {
-            _velocity.X = MovementSpeed * Input.GetGravity().X / 5f;
-        }
-        else
-        {
-            _velocity.X = 0f;
-        }
+        _velocity.X = _horizontalMovement.GetSpeed(GlobalPosition);
 
         if (_velocity.Y == 0f)
         {
@@ -60,5 +47,20 @@ public partial class Player : CharacterBody2D
         }
         Velocity = _velocity;
         MoveAndSlide();
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (Global.Config.Steering == "tilt")
+        {
+            _horizontalMovement = new TiltMovement();
+        }
+        else
+        {
+            _horizontalMovement = new DragMovement();
+        }
+        
     }
 }
