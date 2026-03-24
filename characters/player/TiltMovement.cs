@@ -2,10 +2,10 @@ using Godot;
 
 namespace ContrastClimb.characters.player;
 
-public partial class TiltMovement : HorizontalMovement
+public partial class TiltMovement(Player player) : Movement(player)
 {
-    public override float GetSpeed(Vector2 fromPosition)
+    protected override float GetVelocityX()
     {
-        return HorizontalMovement.MovementSpeed * Input.GetGravity().X / 2f;
+        return Input.GetGravity().X / 2f;
     }
 }

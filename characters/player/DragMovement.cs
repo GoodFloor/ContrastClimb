@@ -1,13 +1,10 @@
-using Godot;
-
 namespace ContrastClimb.characters.player;
 
-public partial class DragMovement : HorizontalMovement
+public partial class DragMovement(Player player) : Movement(player)
 {
-    public override float GetSpeed(Vector2 fromPosition)
+    protected override float GetVelocityX()
     {
-        var direction = GetViewport().GetMousePosition() - fromPosition;
-        direction  = direction.Normalized();
-        return direction.X * MovementSpeed;
+        var directionVector = Player.GetViewport().GetMousePosition() - Player.GlobalPosition;
+        return directionVector.X;
     }
 }
