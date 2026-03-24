@@ -3,6 +3,10 @@ using Godot;
 
 namespace ContrastClimb.characters.player;
 
+/// <summary>
+/// Moving the player with the keyboard (i.e. A/D or arrow keys)
+/// </summary>
+/// <param name="player">Target player to be moved.</param>
 public partial class KeyboardMovement(Player player) : Movement(player)
 {
     protected override float GetVelocityX()

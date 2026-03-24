@@ -16,6 +16,9 @@ public partial class Config : GodotObject
         } 
     }
     
+    /// <summary>
+    /// Loads config from file and makes sure that all the expected options are present. 
+    /// </summary>
     public void LoadConfig()
     {
         _configFile.Load(_configPath);

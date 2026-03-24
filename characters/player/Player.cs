@@ -26,8 +26,6 @@ public partial class Player : CharacterBody2D
         
         _movementHandler.HandleMovement(df);
 
-        
-
         if (Velocity.Y >= 0f)
         {
             CollisionMask = _currentColor;
@@ -43,6 +41,14 @@ public partial class Player : CharacterBody2D
     {
         base._Ready();
 
+        ReloadMovementConfig();
+    }
+
+    /// <summary>
+    /// Checks the current config and loads the defined movement type. Should be called after editing the current config for the changes to take place. 
+    /// </summary>
+    private void ReloadMovementConfig()
+    {
         _movementHandler = Global.Config.Steering switch
         {
             MovementType.Tilt => new TiltMovement(this),

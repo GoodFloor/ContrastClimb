@@ -2,6 +2,10 @@ using Godot;
 
 namespace ContrastClimb.characters.player;
 
+/// <summary>
+/// Abstract class that handles the player movement. Subclasses of this class may change how the player can control the horizontal movement.  
+/// </summary>
+/// <param name="player">Target player to be moved.</param>
 public abstract partial class Movement(Player player) : RefCounted
 {
     private const float Gravity = 2048f;
