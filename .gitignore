@@ -19,3 +19,5 @@ mono_crash.*.json
 
 # Rider
 .idea/
+config.cfg
+/bin
