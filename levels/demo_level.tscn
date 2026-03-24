@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c2bx8l53qnlcq"]
 
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
-[ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platform/platform.tscn" id="2_keei5"]
+[ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="2_keei5"]
+[ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
 [ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
 
 [node name="DemoLevel" type="Node2D" unique_id=659773585]
@@ -44,3 +45,15 @@ position = Vector2(2.3841858e-07, -1)
 scale = Vector2(1.78, 4.0050006)
 texture_normal = ExtResource("4_jo783")
 action = "switch_color"
+
+[node name="StaticPlatform" parent="." unique_id=2104119367 instance=ExtResource("4_dmrny")]
+position = Vector2(-2, 801)
+scale = Vector2(9.040001, 1)
+
+[node name="StaticPlatform2" parent="." unique_id=1485914618 instance=ExtResource("4_dmrny")]
+position = Vector2(-40, 0)
+scale = Vector2(1, 20.999998)
+
+[node name="StaticPlatform3" parent="." unique_id=1306810288 instance=ExtResource("4_dmrny")]
+position = Vector2(359, 0)
+scale = Vector2(1, 21.080002)

@@ -7,24 +7,16 @@ public partial class Player : CharacterBody2D
     private const float Gravity = 2048f;
     private const float JumpSpeed = 50000f;
     private const float MovementSpeed = 500f;
-    private uint _currentColor = 1;
+    private const uint ColorSwitchMask = 1 + 2;     // 1 and 2 are black and white platforms, 4 are persistent platforms
+    private uint _currentColor = 1 + 4;
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
         if (@event.IsActionPressed("switch_color"))
         {
-            if (_currentColor == 1)
-            {
-                _currentColor = 2;
-                CollisionMask = 2;
-            }
-            else
-            {
-                _currentColor = 1;
-                CollisionMask = 1;
-            }
-            
+            CollisionMask ^= ColorSwitchMask;
+            _currentColor ^= ColorSwitchMask;
         }
     }
 
@@ -64,7 +56,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            CollisionMask = 0;
+            CollisionMask = 4;
         }
         Velocity = _velocity;
         MoveAndSlide();
