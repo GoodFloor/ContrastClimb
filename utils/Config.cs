@@ -44,4 +44,10 @@ public partial class Config : GodotObject
         
         _configFile.Save(_configPath);
     }
+
+    public void ResetConfig()
+    {
+        _configFile.EraseSection("gameplay");
+        GenerateDefaultConfig();
+    }
 }
