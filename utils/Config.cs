@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using ContrastClimb.utils;
 
 public partial class Config : GodotObject
@@ -36,9 +35,12 @@ public partial class Config : GodotObject
             // Default steering on mobile device is with tilting
             _configFile.SetValue("gameplay", "steering", (int)EMovementType.Tilt);
         
-            // If the device doesn't have accelerometer, then it defaults to dragging
-            if (Input.GetGravity() == Vector3.Zero)
+            // If the device is not mobile, i.e. it doesn't have accelerometer, then it defaults to dragging
+            if (OS.GetName() != "Android" && OS.GetName() != "iOS")
+            {
                 _configFile.SetValue("gameplay", "steering", (int)EMovementType.Drag);
+            }
+                
         }
         
         

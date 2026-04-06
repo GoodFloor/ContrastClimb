@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/ExitButton.cs" id="2_58e6k"]
 [ext_resource type="Script" uid="uid://bcpmtj46d2gps" path="res://utils/LevelRoot.cs" id="2_g2d5c"]
 [ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/ContinueButton.cs" id="2_xuox5"]
+[ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/ResetConfig.cs" id="5_xvya0"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -45,3 +46,8 @@ script = ExtResource("2_xuox5")
 layout_mode = 2
 text = "Exit"
 script = ExtResource("2_58e6k")
+
+[node name="ResetConfig" type="Button" parent="UIRoot/VBoxContainer" unique_id=1667231188]
+layout_mode = 2
+text = "RESET CONFIG"
+script = ExtResource("5_xvya0")
