@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0ukt8g2r2ht" path="res://utils/GameManager.cs" id="1_58e6k"]
 [ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/ExitButton.cs" id="2_58e6k"]
+[ext_resource type="Script" uid="uid://bcpmtj46d2gps" path="res://utils/LevelRoot.cs" id="2_g2d5c"]
 [ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/ContinueButton.cs" id="2_xuox5"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
@@ -10,6 +11,7 @@ script = ExtResource("1_58e6k")
 
 [node name="LevelRoot" type="Node2D" parent="." unique_id=696974936]
 process_mode = 1
+script = ExtResource("2_g2d5c")
 
 [node name="UIRoot" type="Control" parent="." unique_id=1239400570]
 process_mode = 2
