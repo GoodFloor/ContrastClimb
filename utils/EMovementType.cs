@@ -1,6 +1,6 @@
 namespace ContrastClimb.utils;
 
-public enum MovementType
+public enum EMovementType
 {
     Tilt,
     Drag,

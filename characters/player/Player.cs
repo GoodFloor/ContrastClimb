@@ -51,9 +51,9 @@ public partial class Player : CharacterBody2D
     {
         _movementHandler = Global.Config.Steering switch
         {
-            MovementType.Tilt => new TiltMovement(this),
-            MovementType.Drag => new DragMovement(this),
-            MovementType.Keyboard => new KeyboardMovement(this),
+            EMovementType.Tilt => new TiltMovement(this),
+            EMovementType.Drag => new DragMovement(this),
+            EMovementType.Keyboard => new KeyboardMovement(this),
             _ => null
         };
     }

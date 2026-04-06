@@ -6,9 +6,9 @@ public partial class Config : GodotObject
 {
     private string _configPath = "res://config.cfg";
     private ConfigFile _configFile = new ConfigFile();
-    public MovementType Steering
+    public EMovementType Steering
     {
-        get => (MovementType)(int)_configFile.GetValue("gameplay", "steering");
+        get => (EMovementType)(int)_configFile.GetValue("gameplay", "steering");
         set
         {
             _configFile.SetValue("gameplay", "steering", (int)value);
@@ -34,11 +34,11 @@ public partial class Config : GodotObject
         if (!_configFile.HasSectionKey("gameplay", "steering"))
         {
             // Default steering on mobile device is with tilting
-            _configFile.SetValue("gameplay", "steering", (int)MovementType.Tilt);
+            _configFile.SetValue("gameplay", "steering", (int)EMovementType.Tilt);
         
             // If the device doesn't have accelerometer, then it defaults to dragging
             if (Input.GetGravity() == Vector3.Zero)
-                _configFile.SetValue("gameplay", "steering", (int)MovementType.Drag);
+                _configFile.SetValue("gameplay", "steering", (int)EMovementType.Drag);
         }
         
         
