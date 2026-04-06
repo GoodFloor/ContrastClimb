@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6xb4ktsa5yh4"]
 
 [ext_resource type="Script" uid="uid://d0ukt8g2r2ht" path="res://utils/GameManager.cs" id="1_58e6k"]
+[ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/ExitButton.cs" id="2_58e6k"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -8,3 +9,34 @@ script = ExtResource("1_58e6k")
 
 [node name="LevelRoot" type="Node2D" parent="." unique_id=696974936]
 process_mode = 1
+
+[node name="UIRoot" type="Control" parent="." unique_id=1239400570]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot" unique_id=944597934]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -33.0
+offset_right = 36.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContinueButton" type="Button" parent="UIRoot/VBoxContainer" unique_id=1132971034]
+layout_mode = 2
+text = "Continue"
+
+[node name="ExitButton" type="Button" parent="UIRoot/VBoxContainer" unique_id=1460069890]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("2_58e6k")
