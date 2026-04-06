@@ -9,6 +9,8 @@ public partial class GameManager : Node
     
     public override void _Ready()
     {
+        GetTree().Paused = true;
+        
         Global.GameManager = this;
         Global.Config = new Config();
         Global.Config.LoadConfig();
@@ -19,5 +21,6 @@ public partial class GameManager : Node
         _currentLoadedLevel = ResourceLoader.Load<PackedScene>("res://levels/demo_level.tscn");
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<Node2D>();
         _levelRoot.AddChild(_currentInstanceLevel);
+        
     }
 }
