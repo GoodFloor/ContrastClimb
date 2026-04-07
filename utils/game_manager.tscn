@@ -51,3 +51,37 @@ script = ExtResource("2_58e6k")
 layout_mode = 2
 text = "RESET CONFIG"
 script = ExtResource("5_xvya0")
+
+[node name="LevelSelection" type="GridContainer" parent="UIRoot" unique_id=1717011678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button2" type="Button" parent="UIRoot/LevelSelection" unique_id=1600183931]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Level 1"
+
+[node name="Button" type="Button" parent="UIRoot/LevelSelection" unique_id=2112532593]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Level 1"
+
+[node name="Button3" type="Button" parent="UIRoot/LevelSelection" unique_id=2084763359]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Level 1"
+
+[node name="Button4" type="Button" parent="UIRoot/LevelSelection" unique_id=1911813548]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Level 1"
+
+[node name="Button5" type="Button" parent="UIRoot/LevelSelection" unique_id=620377782]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Level 1"
