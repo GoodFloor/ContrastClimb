@@ -6,7 +6,6 @@
 rotates = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=401626952]
-position_smoothing_enabled = true
 
 [node name="DeathArea" parent="." unique_id=2324551 instance=ExtResource("1_b7a4p")]
 position = Vector2(0, 450)

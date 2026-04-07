@@ -18,7 +18,10 @@ public partial class DemoLevel : Node2D
     {
         base._PhysicsProcess(delta);
         float df = (float)delta;
-        
-        _pathFollow.ProgressRatio += df * _speed;
+
+        if (_pathFollow.ProgressRatio + df * _speed <= 1f)
+        {
+            _pathFollow.ProgressRatio += df * _speed;
+        } 
     }
 }
