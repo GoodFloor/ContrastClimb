@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://c2bx8l53qnlcq"]
 
+[ext_resource type="Script" uid="uid://b68v0m2fyrg12" path="res://levels/DemoLevel.cs" id="1_jo783"]
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
 [ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="2_keei5"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
 [ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
-[ext_resource type="PackedScene" uid="uid://cloryr6anqde5" path="res://environment/death_area.tscn" id="5_ah2my"]
+[ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/path_follow_camera.tscn" id="5_ah2my"]
+
+[sub_resource type="Curve2D" id="Curve2D_ah2my"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 180, 400, 0, 0, 0, 0, 180, 0)
+}
+point_count = 2
 
 [node name="DemoLevel" type="Node2D" unique_id=659773585]
+script = ExtResource("1_jo783")
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("1_u4xt3")]
 position = Vector2(289, 651)
@@ -59,11 +67,10 @@ scale = Vector2(1, 20.999998)
 position = Vector2(359, 0)
 scale = Vector2(1, 21.080002)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=779989853]
-position = Vector2(180, 400)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=457401991]
 
-[node name="DeathArea" parent="CanvasLayer" unique_id=2324551 instance=ExtResource("5_ah2my")]
-position = Vector2(180.00002, 800)
-scale = Vector2(17.999998, 1)
+[node name="PathCamera" type="Path2D" parent="." unique_id=490448936]
+curve = SubResource("Curve2D_ah2my")
+
+[node name="PathFollowCamera" parent="PathCamera" unique_id=79562907 instance=ExtResource("5_ah2my")]
+position = Vector2(180, 400)
