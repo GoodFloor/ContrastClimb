@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="2_keei5"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
 [ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
+[ext_resource type="PackedScene" uid="uid://cloryr6anqde5" path="res://environment/death_area.tscn" id="5_ah2my"]
 
 [node name="DemoLevel" type="Node2D" unique_id=659773585]
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("1_u4xt3")]
-position = Vector2(289, 651)
+position = Vector2(289, 314)
 scale = Vector2(0.5, 0.5)
 
 [node name="SimplePlatform" parent="." unique_id=1623420286 instance=ExtResource("2_keei5")]
@@ -57,3 +58,12 @@ scale = Vector2(1, 20.999998)
 [node name="StaticPlatform3" parent="." unique_id=1306810288 instance=ExtResource("4_dmrny")]
 position = Vector2(359, 0)
 scale = Vector2(1, 21.080002)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=779989853]
+position = Vector2(180, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=457401991]
+
+[node name="DeathArea" parent="CanvasLayer" unique_id=2324551 instance=ExtResource("5_ah2my")]
+position = Vector2(180.00002, 800)
+scale = Vector2(17.999998, 1)

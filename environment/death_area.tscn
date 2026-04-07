@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cloryr6anqde5"]
+
+[ext_resource type="Script" uid="uid://d4gexo6c8gleg" path="res://environment/DeathArea.cs" id="1_kk7if"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4soa8"]
+
+[node name="DeathArea" type="Area2D" unique_id=2324551]
+collision_layer = 7
+collision_mask = 7
+monitorable = false
+script = ExtResource("1_kk7if")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=692016399]
+shape = SubResource("RectangleShape2D_4soa8")
+debug_color = Color(0.9937492, 0, 0.23984057, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
