@@ -20,10 +20,8 @@ public partial class GameManager : Node
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         
-        _currentLoadedLevel = ResourceLoader.Load<PackedScene>("res://levels/demo_level.tscn");
-        _currentInstanceLevel = _currentLoadedLevel.Instantiate<Node2D>();
-        _levelRoot.AddChild(_currentInstanceLevel);
-        
+        PreloadLevel("demo_level");
+        InstantiateLoadedLevel();
     }
 
     public void PauseGame()
@@ -41,7 +39,20 @@ public partial class GameManager : Node
     public void EndLevel(bool success)
     {
         PauseGame();
-        _currentInstanceLevel.QueueFree();
+        
+        InstantiateLoadedLevel();
+    }
+
+    private void PreloadLevel(string levelName)
+    {
+        _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
+    }
+
+    private void InstantiateLoadedLevel()
+    {
+        // Remove previously loaded level before loading a new one
+        _currentInstanceLevel?.QueueFree();
+        
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<Node2D>();
         _levelRoot.AddChild(_currentInstanceLevel);
     }
