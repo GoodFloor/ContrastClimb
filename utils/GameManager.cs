@@ -8,17 +8,26 @@ public partial class GameManager : Node
     private Node2D _currentInstanceLevel;
 
     private CanvasLayer _uiRoot;
+    private Control _mainMenu;
+    private Control _levelSelection;
+    private Control _winScreen;
+    private Control _failScreen;
+    
     
     public override void _Ready()
     {
-        GetTree().Paused = true;
-        
         Global.GameManager = this;
         Global.Config = new Config();
         Global.Config.LoadConfig();
         
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
+        _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
+        _levelSelection = _uiRoot.GetNode<Control>("LevelSelection");
+        _winScreen = _uiRoot.GetNode<Control>("WinScreen");
+        _failScreen = _uiRoot.GetNode<Control>("FailScreen");
+        
+        PauseGame();
         
         PreloadLevel("demo_level");
         InstantiateLoadedLevel();
@@ -28,6 +37,10 @@ public partial class GameManager : Node
     {
         GetTree().Paused = true;
         _uiRoot.Visible = true;
+        _mainMenu.Visible = true;
+        _levelSelection.Visible = false;
+        _winScreen.Visible = false;
+        _failScreen.Visible = false;
     }
 
     public void ResumeGame()
@@ -39,8 +52,16 @@ public partial class GameManager : Node
     public void EndLevel(bool success)
     {
         PauseGame();
-        
-        InstantiateLoadedLevel();
+
+        _mainMenu.Visible = false;
+        if (success)
+        {
+            _winScreen.Visible = true;
+        }
+        else
+        {
+            _failScreen.Visible = true;
+        }
     }
 
     private void PreloadLevel(string levelName)
@@ -48,7 +69,7 @@ public partial class GameManager : Node
         _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
     }
 
-    private void InstantiateLoadedLevel()
+    public void InstantiateLoadedLevel()
     {
         // Remove previously loaded level before loading a new one
         _currentInstanceLevel?.QueueFree();

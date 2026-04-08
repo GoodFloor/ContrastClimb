@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b6xb4ktsa5yh4"]
 
 [ext_resource type="Script" uid="uid://d0ukt8g2r2ht" path="res://utils/GameManager.cs" id="1_58e6k"]
-[ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/ExitButton.cs" id="2_58e6k"]
+[ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/main_menu/ExitButton.cs" id="2_58e6k"]
 [ext_resource type="Script" uid="uid://bcpmtj46d2gps" path="res://utils/LevelRoot.cs" id="2_g2d5c"]
-[ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/ContinueButton.cs" id="2_xuox5"]
-[ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/ResetConfig.cs" id="5_xvya0"]
+[ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/main_menu/ContinueButton.cs" id="2_xuox5"]
+[ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/main_menu/ResetConfig.cs" id="5_xvya0"]
+[ext_resource type="Script" uid="uid://djnqe0f13lny0" path="res://utils/ui/game_over/BackButton.cs" id="6_ds37j"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -78,3 +79,49 @@ text = "Level 1"
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Level 1"
+
+[node name="WinScreen" type="VBoxContainer" parent="UIRoot" unique_id=342444967]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIRoot/WinScreen" unique_id=1302292604]
+layout_mode = 2
+text = "You won!"
+
+[node name="Button" type="Button" parent="UIRoot/WinScreen" unique_id=652341002]
+layout_mode = 2
+text = "Go back"
+script = ExtResource("6_ds37j")
+
+[node name="FailScreen" type="VBoxContainer" parent="UIRoot" unique_id=1102325983]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIRoot/FailScreen" unique_id=925337134]
+layout_mode = 2
+text = "Game over!"
+
+[node name="Button" type="Button" parent="UIRoot/FailScreen" unique_id=1456028925]
+layout_mode = 2
+text = "Go back"
+script = ExtResource("6_ds37j")
