@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dr8mhix453emc"]
+
+[ext_resource type="Script" uid="uid://b0ivoyscah1ci" path="res://environment/WinArea.cs" id="1_y10yd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0txlb"]
+
+[node name="WinArea" type="Area2D" unique_id=1347027364]
+collision_layer = 7
+collision_mask = 7
+monitorable = false
+script = ExtResource("1_y10yd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1622733965]
+shape = SubResource("RectangleShape2D_0txlb")
+debug_color = Color(0.398086, 0.61066043, 3.85046e-07, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

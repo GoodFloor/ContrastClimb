@@ -4,6 +4,7 @@
 
 [node name="PathFollowCamera" type="PathFollow2D" unique_id=79562907]
 rotates = false
+loop = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=401626952]
 

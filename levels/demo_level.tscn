@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
 [ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
 [ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/path_follow_camera.tscn" id="5_ah2my"]
+[ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="6_pjwgr"]
 
 [sub_resource type="Curve2D" id="Curve2D_ah2my"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 180, 400, 0, 0, 0, 0, 180, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 180, 400, 0, 0, 0, 0, 180, -120)
 }
 point_count = 2
 
@@ -48,6 +49,17 @@ _isWhite = true
 position = Vector2(259, 80)
 _isWhite = true
 
+[node name="SimplePlatform9" parent="." unique_id=1714648711 instance=ExtResource("2_keei5")]
+position = Vector2(101, -82)
+
+[node name="SimplePlatform10" parent="." unique_id=413068316 instance=ExtResource("2_keei5")]
+position = Vector2(210, -235)
+_isWhite = true
+
+[node name="SimplePlatform11" parent="." unique_id=126180197 instance=ExtResource("2_keei5")]
+position = Vector2(-1, -398)
+scale = Vector2(3.6000006, 1)
+
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=142068646]
 visibility_layer = 0
 position = Vector2(2.3841858e-07, -1)
@@ -60,14 +72,16 @@ position = Vector2(-2, 801)
 scale = Vector2(9.040001, 1)
 
 [node name="StaticPlatform2" parent="." unique_id=1485914618 instance=ExtResource("4_dmrny")]
-position = Vector2(-40, 0)
-scale = Vector2(1, 20.999998)
+position = Vector2(-40, -570)
+scale = Vector2(1, 35.34535)
 
 [node name="StaticPlatform3" parent="." unique_id=1306810288 instance=ExtResource("4_dmrny")]
-position = Vector2(359, 0)
-scale = Vector2(1, 21.080002)
+position = Vector2(359, -570)
+scale = Vector2(1, 35.480003)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=457401991]
+[node name="WinArea" parent="." unique_id=1347027364 instance=ExtResource("6_pjwgr")]
+position = Vector2(179, -560)
+scale = Vector2(23.400002, 1)
 
 [node name="PathCamera" type="Path2D" parent="." unique_id=490448936]
 curve = SubResource("Curve2D_ah2my")
