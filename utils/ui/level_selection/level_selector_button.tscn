@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxirwj51vyjh7"]
+
+[ext_resource type="Script" uid="uid://c4tc4y5iopeg7" path="res://utils/ui/level_selection/LevelSelectorButton.cs" id="1_xw42g"]
+
+[node name="LevelSelectorButton" type="Button" unique_id=1066692627]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Level X"
+script = ExtResource("1_xw42g")
+LevelName = "demo_level"

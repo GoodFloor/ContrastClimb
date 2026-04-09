@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/main_menu/ExitButton.cs" id="2_58e6k"]
 [ext_resource type="Script" uid="uid://bcpmtj46d2gps" path="res://utils/LevelRoot.cs" id="2_g2d5c"]
 [ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/main_menu/ContinueButton.cs" id="2_xuox5"]
+[ext_resource type="Script" uid="uid://c5ofplaradvvf" path="res://utils/ui/main_menu/LevelsButton.cs" id="4_1inmq"]
 [ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/main_menu/ResetConfig.cs" id="5_xvya0"]
 [ext_resource type="Script" uid="uid://djnqe0f13lny0" path="res://utils/ui/game_over/BackButton.cs" id="6_ds37j"]
+[ext_resource type="PackedScene" uid="uid://bxirwj51vyjh7" path="res://utils/ui/level_selection/level_selector_button.tscn" id="7_dpd3l"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -36,6 +38,11 @@ layout_mode = 2
 text = "Continue"
 script = ExtResource("2_xuox5")
 
+[node name="LevelsButton" type="Button" parent="UIRoot/MainMenu" unique_id=634426962]
+layout_mode = 2
+text = "Levels"
+script = ExtResource("4_1inmq")
+
 [node name="ExitButton" type="Button" parent="UIRoot/MainMenu" unique_id=1460069890]
 layout_mode = 2
 text = "Exit"
@@ -45,40 +52,6 @@ script = ExtResource("2_58e6k")
 layout_mode = 2
 text = "RESET CONFIG"
 script = ExtResource("5_xvya0")
-
-[node name="LevelSelection" type="GridContainer" parent="UIRoot" unique_id=1717011678]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 3
-
-[node name="Button2" type="Button" parent="UIRoot/LevelSelection" unique_id=1600183931]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Level 1"
-
-[node name="Button" type="Button" parent="UIRoot/LevelSelection" unique_id=2112532593]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Level 1"
-
-[node name="Button3" type="Button" parent="UIRoot/LevelSelection" unique_id=2084763359]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Level 1"
-
-[node name="Button4" type="Button" parent="UIRoot/LevelSelection" unique_id=1911813548]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Level 1"
-
-[node name="Button5" type="Button" parent="UIRoot/LevelSelection" unique_id=620377782]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Level 1"
 
 [node name="WinScreen" type="VBoxContainer" parent="UIRoot" unique_id=342444967]
 visible = false
@@ -125,3 +98,45 @@ text = "Game over!"
 layout_mode = 2
 text = "Go back"
 script = ExtResource("6_ds37j")
+
+[node name="LevelSelection" type="Control" parent="UIRoot" unique_id=1339949896]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelGrid" type="GridContainer" parent="UIRoot/LevelSelection" unique_id=1717011678]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -102.0
+offset_right = 154.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="LevelSelectorButton" parent="UIRoot/LevelSelection/LevelGrid" unique_id=1066692627 instance=ExtResource("7_dpd3l")]
+layout_mode = 2
+
+[node name="LevelSelectorButton2" parent="UIRoot/LevelSelection/LevelGrid" unique_id=2112957645 instance=ExtResource("7_dpd3l")]
+layout_mode = 2
+
+[node name="LevelSelectorButton3" parent="UIRoot/LevelSelection/LevelGrid" unique_id=135063379 instance=ExtResource("7_dpd3l")]
+layout_mode = 2
+
+[node name="LevelSelectorButton4" parent="UIRoot/LevelSelection/LevelGrid" unique_id=437319118 instance=ExtResource("7_dpd3l")]
+layout_mode = 2
+
+[node name="LevelSelectorButton5" parent="UIRoot/LevelSelection/LevelGrid" unique_id=2003255700 instance=ExtResource("7_dpd3l")]
+layout_mode = 2
+
+[node name="LevelSelectorButton6" parent="UIRoot/LevelSelection/LevelGrid" unique_id=419987807 instance=ExtResource("7_dpd3l")]
+layout_mode = 2

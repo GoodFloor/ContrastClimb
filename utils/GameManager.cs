@@ -49,6 +49,13 @@ public partial class GameManager : Node
         _uiRoot.Visible = false;
     }
 
+    public void PlayLevel(string levelName)
+    {
+        PreloadLevel(levelName);
+        InstantiateLoadedLevel();
+        ResumeGame();
+    }
+
     public void EndLevel(bool success)
     {
         PauseGame();
@@ -64,12 +71,25 @@ public partial class GameManager : Node
         }
     }
 
+    public void RestartLevel()
+    {
+        PauseGame();
+        InstantiateLoadedLevel();
+    }
+
+    public void OpenLevelSelection()
+    {
+        PauseGame();
+        _mainMenu.Visible = false;
+        _levelSelection.Visible = true;
+    }
+
     private void PreloadLevel(string levelName)
     {
         _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
     }
 
-    public void InstantiateLoadedLevel()
+    private void InstantiateLoadedLevel()
     {
         // Remove previously loaded level before loading a new one
         _currentInstanceLevel?.QueueFree();
