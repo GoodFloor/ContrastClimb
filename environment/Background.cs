@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using ContrastClimb.utils;
 
 public partial class Background : ColorRect
 {
@@ -13,12 +14,12 @@ public partial class Background : ColorRect
             if (_isWhite)
             {
                 _isWhite = false;
-                Color = Colors.Black;
+                Color = GColors.Dark;
             }
             else
             {
                 _isWhite = true;
-                Color = Colors.White;
+                Color = GColors.Light;
             }
         }
     }

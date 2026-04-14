@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using ContrastClimb.utils;
 
 public partial class Platform : StaticBody2D
 {
@@ -12,10 +13,11 @@ public partial class Platform : StaticBody2D
         {
             Visible = false;
             CollisionLayer = 2;
+            GetNode<ColorRect>("ColorRect").Color = GColors.Light;
         }
         else
         {
-            GetNode<ColorRect>("ColorRect").Color = Colors.Black;
+            GetNode<ColorRect>("ColorRect").Color = GColors.Dark;
         }
     }
     

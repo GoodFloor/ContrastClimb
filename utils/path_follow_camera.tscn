@@ -21,6 +21,7 @@ offset_top = -485.0
 offset_right = -207.00002
 offset_bottom = -445.0
 scale = Vector2(12.197208, 24.311785)
+color = Color(0.99215686, 0.94509804, 0.84705883, 1)
 script = ExtResource("2_ssmfs")
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=1748886717]
