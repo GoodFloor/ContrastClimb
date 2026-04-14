@@ -8,8 +8,8 @@ namespace ContrastClimb.characters.player;
 /// <param name="player">Target player to be moved.</param>
 public abstract partial class Movement(Player player) : RefCounted
 {
-    private const float Gravity = 2048f;
-    private const float JumpSpeed = 50000f;
+    private const float Gravity = 512;
+    private const float JumpSpeed = 27000f;
     private const float MoveSpeed = 500f;
     protected Player Player = player;
     protected abstract float GetVelocityX();
