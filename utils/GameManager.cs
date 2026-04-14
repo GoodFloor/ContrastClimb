@@ -29,7 +29,7 @@ public partial class GameManager : Node
         
         PauseGame();
         
-        PreloadLevel("demo_level");
+        PreloadLevel("level_0");
         InstantiateLoadedLevel();
     }
 

@@ -109,13 +109,13 @@ curve = SubResource("Curve2D_c4pne")
 [node name="PathFollowCamera" parent="PathCamera" unique_id=79562907 instance=ExtResource("4_jum3j")]
 
 [node name="AreaStartingCamera" type="Area2D" parent="." unique_id=1955147348]
+position = Vector2(180, 400)
 collision_layer = 7
 collision_mask = 7
 monitorable = false
 script = ExtResource("6_7d3si")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartingCamera" unique_id=1030527192]
-position = Vector2(181, 398)
 scale = Vector2(18, 1)
 shape = SubResource("RectangleShape2D_foxie")
 debug_color = Color(0.7592278, 0.18339637, 0.99999994, 0.41960785)
