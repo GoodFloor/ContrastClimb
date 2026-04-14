@@ -6,6 +6,7 @@ public partial class DemoLevel : Node2D
     private Path2D _pathCamera;
     private PathFollow2D _pathFollow;
     private float _speed = 0.1f;
+    private bool _isCameraStarted = false;
 
     public override void _Ready()
     {
@@ -19,9 +20,12 @@ public partial class DemoLevel : Node2D
         base._PhysicsProcess(delta);
         float df = (float)delta;
 
-        if (_pathFollow.ProgressRatio + df * _speed <= 1f)
-        {
+        if (_isCameraStarted)
             _pathFollow.ProgressRatio += df * _speed;
-        } 
+    }
+
+    public void StartCamera()
+    {
+        _isCameraStarted = true;
     }
 }

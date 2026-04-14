@@ -13,6 +13,10 @@ public partial class Platform : StaticBody2D
             Visible = false;
             CollisionLayer = 2;
         }
+        else
+        {
+            GetNode<ColorRect>("ColorRect").Color = Colors.Black;
+        }
     }
     
     public override void _PhysicsProcess(double delta)

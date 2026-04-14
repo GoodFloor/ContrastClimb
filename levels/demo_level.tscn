@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
 [ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="2_keei5"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
-[ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="4_jo783"]
 [ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/path_follow_camera.tscn" id="5_ah2my"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="6_pjwgr"]
 
@@ -59,13 +58,6 @@ _isWhite = true
 [node name="SimplePlatform11" parent="." unique_id=126180197 instance=ExtResource("2_keei5")]
 position = Vector2(-1, -398)
 scale = Vector2(3.6000006, 1)
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=142068646]
-visibility_layer = 0
-position = Vector2(2.3841858e-07, -1)
-scale = Vector2(1.78, 4.0050006)
-texture_normal = ExtResource("4_jo783")
-action = "switch_color"
 
 [node name="StaticPlatform" parent="." unique_id=2104119367 instance=ExtResource("4_dmrny")]
 position = Vector2(-2, 801)

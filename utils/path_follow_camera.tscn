@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dttutbgr1r0lg"]
 
 [ext_resource type="PackedScene" uid="uid://cloryr6anqde5" path="res://environment/death_area.tscn" id="1_b7a4p"]
+[ext_resource type="Script" uid="uid://dalixq5imdulg" path="res://environment/Background.cs" id="2_ssmfs"]
+[ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="3_82kw4"]
 
 [node name="PathFollowCamera" type="PathFollow2D" unique_id=79562907]
 rotates = false
@@ -10,4 +12,20 @@ loop = false
 
 [node name="DeathArea" parent="." unique_id=2324551 instance=ExtResource("1_b7a4p")]
 position = Vector2(0, 450)
-scale = Vector2(32, 1.053)
+scale = Vector2(32, 1)
+
+[node name="Background" type="ColorRect" parent="." unique_id=1969236282]
+z_index = -1
+offset_left = -247.00002
+offset_top = -485.0
+offset_right = -207.00002
+offset_bottom = -445.0
+scale = Vector2(12.197208, 24.311785)
+script = ExtResource("2_ssmfs")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="." unique_id=1748886717]
+visibility_layer = 0
+position = Vector2(-180, -400)
+scale = Vector2(1.8, 3)
+texture_normal = ExtResource("3_82kw4")
+action = "switch_color"
