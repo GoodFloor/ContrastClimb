@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwgri5hlvjl84" path="res://characters/player/slime_body.png" id="1_508ok"]
 [ext_resource type="Script" uid="uid://b8mmal8gm1j25" path="res://characters/player/Player.cs" id="1_xxgcw"]
+[ext_resource type="Texture2D" uid="uid://f02enh2nydyv" path="res://characters/player/output-onlinepngtools.png" id="3_exd8k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxgcw"]
 radius = 13.0
@@ -12,6 +13,7 @@ collision_mask = 5
 script = ExtResource("1_xxgcw")
 
 [node name="SlimeBody" type="Sprite2D" parent="." unique_id=1833845257]
+visible = false
 position = Vector2(0, -45)
 texture = ExtResource("1_508ok")
 
@@ -19,3 +21,8 @@ texture = ExtResource("1_508ok")
 position = Vector2(0, -13)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xxgcw")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1606735966]
+position = Vector2(3.8146973e-06, -39.99994)
+scale = Vector2(0.28958333, 0.28958333)
+texture = ExtResource("3_exd8k")

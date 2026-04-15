@@ -15,6 +15,14 @@ public partial class Player : CharacterBody2D
         {
             CollisionMask ^= ColorSwitchMask;
             _currentColor ^= ColorSwitchMask;
+            if (_currentColor == 5)
+            {
+                Modulate = GColors.Dark;
+            }
+            else
+            {
+                Modulate = GColors.Light;
+            }
         }
     }
 
@@ -42,6 +50,8 @@ public partial class Player : CharacterBody2D
         base._Ready();
 
         ReloadMovementConfig();
+        
+        Modulate = GColors.Dark;
     }
 
     /// <summary>
