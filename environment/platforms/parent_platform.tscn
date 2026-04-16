@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cdovfo0hh54a3"]
+
+[ext_resource type="Script" uid="uid://b27ici05l8r0f" path="res://environment/platforms/ParentPlatform.cs" id="1_cfpgs"]
+[ext_resource type="Script" uid="uid://tnbxdgujt1u4" path="res://environment/platforms/PlatformSprite.cs" id="2_27jit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8slxd"]
+size = Vector2(100, 20)
+
+[node name="ParentPlatform" type="StaticBody2D" unique_id=1434721437]
+script = ExtResource("1_cfpgs")
+
+[node name="PlatformSprite" type="Node2D" parent="." unique_id=713926470]
+position = Vector2(-50, -10)
+script = ExtResource("2_27jit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446212505]
+shape = SubResource("RectangleShape2D_8slxd")

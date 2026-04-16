@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://jjglqf8dit6x"]
+
+[ext_resource type="PackedScene" uid="uid://cdovfo0hh54a3" path="res://environment/platforms/parent_platform.tscn" id="1_c0u3b"]
+[ext_resource type="Script" uid="uid://by0l32tnpqv8m" path="res://environment/platforms/OneWayPlatform.cs" id="2_vk2bq"]
+[ext_resource type="Script" uid="uid://beree1lwrlwih" path="res://environment/platforms/OneWayPlatformSprite.cs" id="3_6455x"]
+
+[node name="OneWayPlatform" unique_id=1434721437 instance=ExtResource("1_c0u3b")]
+script = ExtResource("2_vk2bq")
+
+[node name="PlatformSprite" parent="." index="0" unique_id=713926470]
+script = ExtResource("3_6455x")
+
+[node name="ColorRect" type="ColorRect" parent="PlatformSprite" index="0" unique_id=1964657647]
+offset_right = 100.0
+offset_bottom = 20.0
