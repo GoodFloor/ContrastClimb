@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://b68v0m2fyrg12" path="res://levels/DemoLevel.cs" id="1_yi3jx"]
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="2_7d3si"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="2_foxie"]
-[ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="3_7d3si"]
-[ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/path_follow_camera.tscn" id="4_jum3j"]
-[ext_resource type="Script" uid="uid://djsq5lyo0emvh" path="res://utils/AreaStartingCamera.cs" id="6_7d3si"]
+[ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_c4pne"]
+[ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="4_jum3j"]
+[ext_resource type="Script" uid="uid://djsq5lyo0emvh" path="res://utils/camera/AreaStartingCamera.cs" id="6_7d3si"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="7_jum3j"]
 
-[sub_resource type="Curve2D" id="Curve2D_c4pne"]
+[sub_resource type="Curve2D" id="Curve2D_jum3j"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1200)
 }
@@ -43,70 +43,68 @@ scale = Vector2(1, 50)
 
 [node name="Basic" type="Node2D" parent="Platforms" unique_id=2073250152]
 
-[node name="SimplePlatform" parent="Platforms/Basic" unique_id=1623420286 instance=ExtResource("3_7d3si")]
-position = Vector2(0, 650)
-_isWhite = true
+[node name="OneWayPlatform" parent="Platforms/Basic" unique_id=1434721437 instance=ExtResource("4_c4pne")]
+position = Vector2(50, 660)
+IsWhite = true
 
-[node name="SimplePlatform2" parent="Platforms/Basic" unique_id=2016659028 instance=ExtResource("3_7d3si")]
-position = Vector2(260, 650)
-_isWhite = true
+[node name="OneWayPlatform2" parent="Platforms/Basic" unique_id=487331890 instance=ExtResource("4_c4pne")]
+position = Vector2(310, 660)
+IsWhite = true
 
-[node name="SimplePlatform3" parent="Platforms/Basic" unique_id=1114639537 instance=ExtResource("3_7d3si")]
-position = Vector2(58, 497)
+[node name="OneWayPlatform3" parent="Platforms/Basic" unique_id=1669957287 instance=ExtResource("4_c4pne")]
+position = Vector2(185, 505)
 scale = Vector2(2.5, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform4" parent="Platforms/Basic" unique_id=504851320 instance=ExtResource("3_7d3si")]
-position = Vector2(0, 360)
+[node name="OneWayPlatform4" parent="Platforms/Basic" unique_id=12420676 instance=ExtResource("4_c4pne")]
+position = Vector2(125, 370)
 scale = Vector2(2.5, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform5" parent="Platforms/Basic" unique_id=443180830 instance=ExtResource("3_7d3si")]
-position = Vector2(100, 230)
-_isWhite = true
+[node name="OneWayPlatform5" parent="Platforms/Basic" unique_id=2077969626 instance=ExtResource("4_c4pne")]
+position = Vector2(150, 240)
+IsWhite = true
 
-[node name="SimplePlatform6" parent="Platforms/Basic" unique_id=211493684 instance=ExtResource("3_7d3si")]
-position = Vector2(260, 230)
-_isWhite = true
+[node name="OneWayPlatform6" parent="Platforms/Basic" unique_id=2005538918 instance=ExtResource("4_c4pne")]
+position = Vector2(310, 240)
+IsWhite = true
 
-[node name="SimplePlatform7" parent="Platforms/Basic" unique_id=1212057555 instance=ExtResource("3_7d3si")]
-position = Vector2(0, 60)
+[node name="OneWayPlatform7" parent="Platforms/Basic" unique_id=1031617069 instance=ExtResource("4_c4pne")]
+position = Vector2(125, 70)
 scale = Vector2(2.5, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform8" parent="Platforms/Basic" unique_id=739195019 instance=ExtResource("3_7d3si")]
-position = Vector2(110, -120)
+[node name="OneWayPlatform8" parent="Platforms/Basic" unique_id=1655180049 instance=ExtResource("4_c4pne")]
+position = Vector2(225.00002, -110)
 scale = Vector2(2.3, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform9" parent="Platforms/Basic" unique_id=402653061 instance=ExtResource("3_7d3si")]
-position = Vector2(60, -300)
+[node name="OneWayPlatform9" parent="Platforms/Basic" unique_id=1673352594 instance=ExtResource("4_c4pne")]
+position = Vector2(165, -290)
 scale = Vector2(2.1, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform10" parent="Platforms/Basic" unique_id=631803656 instance=ExtResource("3_7d3si")]
-position = Vector2(110, -480)
-scale = Vector2(1.8, 1)
-_isWhite = true
+[node name="OneWayPlatform10" parent="Platforms/Basic" unique_id=315882427 instance=ExtResource("4_c4pne")]
+position = Vector2(200, -470)
+scale = Vector2(1.75, 1)
+IsWhite = true
 
-[node name="SimplePlatform11" parent="Platforms/Basic" unique_id=886086549 instance=ExtResource("3_7d3si")]
-position = Vector2(0, -660)
+[node name="OneWayPlatform11" parent="Platforms/Basic" unique_id=1981132926 instance=ExtResource("4_c4pne")]
+position = Vector2(70, -650)
 scale = Vector2(1.4, 1)
-_isWhite = true
+IsWhite = true
 
-[node name="SimplePlatform12" parent="Platforms/Basic" unique_id=1790448338 instance=ExtResource("3_7d3si")]
-position = Vector2(144, -840)
-_isWhite = true
+[node name="OneWayPlatform12" parent="Platforms/Basic" unique_id=1127855634 instance=ExtResource("4_c4pne")]
+position = Vector2(195, -830)
+IsWhite = true
 
-[node name="SimplePlatform13" parent="Platforms/Basic" unique_id=1866153504 instance=ExtResource("3_7d3si")]
-position = Vector2(0, -1020)
-_isWhite = true
+[node name="OneWayPlatform13" parent="Platforms/Basic" unique_id=1945539844 instance=ExtResource("4_c4pne")]
+position = Vector2(50, -1010)
+IsWhite = true
 
-[node name="PathCamera" type="Path2D" parent="." unique_id=1100991888]
+[node name="CameraPath" parent="." unique_id=1033517817 instance=ExtResource("4_jum3j")]
 position = Vector2(180, 400)
-curve = SubResource("Curve2D_c4pne")
-
-[node name="PathFollowCamera" parent="PathCamera" unique_id=79562907 instance=ExtResource("4_jum3j")]
+curve = SubResource("Curve2D_jum3j")
 
 [node name="AreaStartingCamera" type="Area2D" parent="." unique_id=1955147348]
 position = Vector2(180, 400)

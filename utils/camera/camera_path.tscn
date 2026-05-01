@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dttutbgr1r0lg"]
+
+[ext_resource type="Script" uid="uid://gavve00jio06" path="res://utils/camera/CameraPath.cs" id="1_7ldds"]
+[ext_resource type="PackedScene" uid="uid://cloryr6anqde5" path="res://environment/death_area.tscn" id="1_b7a4p"]
+[ext_resource type="Script" uid="uid://dalixq5imdulg" path="res://environment/Background.cs" id="2_ssmfs"]
+[ext_resource type="Texture2D" uid="uid://veqrtexpg0gd" path="res://textures/button_switch.png" id="3_82kw4"]
+
+[sub_resource type="Curve2D" id="Curve2D_ddbs4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -200)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82kw4"]
+size = Vector2(360, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevta"]
+size = Vector2(360, 400)
+
+[node name="CameraPath" type="Path2D" unique_id=1033517817]
+position = Vector2(180, 400)
+curve = SubResource("Curve2D_ddbs4")
+script = ExtResource("1_7ldds")
+
+[node name="PathFollow" type="PathFollow2D" parent="." unique_id=79562907]
+rotates = false
+loop = false
+
+[node name="Camera2D" type="Camera2D" parent="PathFollow" unique_id=401626952]
+
+[node name="DeathArea" parent="PathFollow" unique_id=2324551 instance=ExtResource("1_b7a4p")]
+position = Vector2(0, 450)
+scale = Vector2(32, 1)
+
+[node name="Background" type="ColorRect" parent="PathFollow" unique_id=1969236282]
+z_index = -1
+offset_left = -247.00002
+offset_top = -485.0
+offset_right = -207.00002
+offset_bottom = -445.0
+scale = Vector2(12.197208, 24.311785)
+color = Color(0.99215686, 0.94509804, 0.84705883, 1)
+script = ExtResource("2_ssmfs")
+
+[node name="SwitchColorButton" type="TouchScreenButton" parent="PathFollow" unique_id=1748886717]
+visibility_layer = 0
+position = Vector2(-180, -400)
+scale = Vector2(1.8, 3)
+texture_normal = ExtResource("3_82kw4")
+action = "switch_color"
+
+[node name="CameraSpeedIncreaseArea" type="Area2D" parent="PathFollow" unique_id=50615454]
+position = Vector2(0, -270)
+collision_layer = 15
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow/CameraSpeedIncreaseArea" unique_id=350429195]
+shape = SubResource("RectangleShape2D_82kw4")
+debug_color = Color(0, 0.31243172, 0.49681002, 0.41960785)
+
+[node name="CameraSpeedDecreaseArea" type="Area2D" parent="PathFollow" unique_id=80244263]
+position = Vector2(0, 200)
+collision_layer = 15
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow/CameraSpeedDecreaseArea" unique_id=346910657]
+shape = SubResource("RectangleShape2D_fevta")
+debug_color = Color(0, 0.31243172, 0.49681002, 0.41960785)
+
+[connection signal="body_entered" from="PathFollow/CameraSpeedIncreaseArea" to="." method="OnBodyEnteredSpeedIncrease"]
+[connection signal="body_entered" from="PathFollow/CameraSpeedDecreaseArea" to="." method="OnBodyEnteredSpeedDecrease"]
