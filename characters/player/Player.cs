@@ -4,8 +4,11 @@ using ContrastClimb.utils;
 
 public partial class Player : CharacterBody2D
 {
-    private const uint ColorSwitchMask = 1 + 2;     // This is a bit mask: 1 and 2 are black and white platforms, 4 are persistent platforms
-    private uint _currentColor = 1 + 4;
+    [Export] private bool _startsWhite;
+    
+    private const uint ColorSwitchMask = (uint)ECollisionMask.BlackAndWhite;
+    private uint _currentColor = (uint)ECollisionMask.BlackAndSolid;
+    
     private Movement _movementHandler;
 
     public override void _Input(InputEvent @event)
@@ -13,9 +16,9 @@ public partial class Player : CharacterBody2D
         base._Input(@event);
         if (@event.IsActionPressed("switch_color"))
         {
-            CollisionMask ^= ColorSwitchMask;
             _currentColor ^= ColorSwitchMask;
-            if (_currentColor == 5)
+             
+            if (_currentColor == (uint)ECollisionMask.BlackAndSolid)
             {
                 Modulate = GColors.Dark;
             }
@@ -36,11 +39,11 @@ public partial class Player : CharacterBody2D
 
         if (Velocity.Y >= 0f)
         {
-            CollisionMask = _currentColor;
+            CollisionMask = _currentColor & (uint)ECollisionMask.DownwardsAndSolid;
         }
         else
         {
-            CollisionMask = 4;
+            CollisionMask = _currentColor & (uint)ECollisionMask.UpwardsAndSolid;
         }
         MoveAndSlide();
     }
@@ -48,10 +51,17 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
-
-        ReloadMovementConfig();
         
         Modulate = GColors.Dark;
+        
+        if (_startsWhite)
+        {
+            _currentColor ^= ColorSwitchMask;
+            Modulate = GColors.Light;
+        }
+        CollisionMask = _currentColor;
+
+        ReloadMovementConfig();
     }
 
     /// <summary>
