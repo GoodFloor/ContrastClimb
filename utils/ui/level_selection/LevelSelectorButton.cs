@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace ContrastClimb.utils.ui.level_selection;
 
 public partial class LevelSelectorButton : Button
 {

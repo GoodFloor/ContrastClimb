@@ -1,5 +1,7 @@
 using Godot;
-using ContrastClimb.utils;
+using ContrastClimb.utils.enums;
+
+namespace ContrastClimb.utils;
 
 public partial class Config : GodotObject
 {

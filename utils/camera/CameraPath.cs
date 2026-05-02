@@ -1,4 +1,7 @@
 using Godot;
+using ContrastClimb.characters.player;
+
+namespace ContrastClimb.utils;
 
 public partial class CameraPath : Path2D
 {

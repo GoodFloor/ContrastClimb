@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace ContrastClimb.utils.ui.game_over;
 
 public partial class BackButton : Button
 {

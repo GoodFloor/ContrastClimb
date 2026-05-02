@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="1_u4xt3"]
 [ext_resource type="PackedScene" uid="uid://b1jcn0j2iart0" path="res://environment/platforms/platform.tscn" id="2_keei5"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="4_dmrny"]
-[ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="5_ah2my"]
+[ext_resource type="PackedScene" path="res://utils/camera/camera_path.tscn" id="5_ah2my"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="6_pjwgr"]
-[ext_resource type="Script" uid="uid://djsq5lyo0emvh" path="res://utils/camera/AreaStartingCamera.cs" id="7_pjwgr"]
 
 [sub_resource type="Curve2D" id="Curve2D_pjwgr"]
 _data = {
@@ -86,7 +85,6 @@ position = Vector2(180, 400)
 collision_layer = 7
 collision_mask = 7
 monitorable = false
-script = ExtResource("7_pjwgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartingCamera" unique_id=1268122746]
 scale = Vector2(18, 1)

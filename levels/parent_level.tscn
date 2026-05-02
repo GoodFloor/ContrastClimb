@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bmtyf8xi4mblq"]
+
+[ext_resource type="Script" uid="uid://byrdti6y83dch" path="res://levels/ParentLevel.cs" id="1_icvtc"]
+[ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="2_h0kjv"]
+[ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="3_1givh"]
+[ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_n3k1t"]
+[ext_resource type="PackedScene" path="res://utils/camera/camera_path.tscn" id="5_iiw0q"]
+[ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="7_ysplb"]
+
+[sub_resource type="Curve2D" id="Curve2D_jum3j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1200)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foxie"]
+
+[node name="Level_" type="Node2D" unique_id=469552005]
+script = ExtResource("1_icvtc")
+
+[node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_h0kjv")]
+position = Vector2(180, 800)
+scale = Vector2(0.5, 0.5)
+
+[node name="Platforms" type="Node2D" parent="." unique_id=1977420596]
+
+[node name="Static" type="Node2D" parent="Platforms" unique_id=1234300566]
+
+[node name="Floor" parent="Platforms/Static" unique_id=2104119367 instance=ExtResource("3_1givh")]
+position = Vector2(0, 800)
+scale = Vector2(9, 1)
+
+[node name="LeftWall" parent="Platforms/Static" unique_id=535848991 instance=ExtResource("3_1givh")]
+position = Vector2(0, 800)
+rotation = 3.1415927
+scale = Vector2(1, 50)
+
+[node name="RightWall" parent="Platforms/Static" unique_id=1316489267 instance=ExtResource("3_1givh")]
+position = Vector2(400, 800)
+rotation = 3.1415927
+scale = Vector2(1, 50)
+
+[node name="Basic" type="Node2D" parent="Platforms" unique_id=2073250152]
+
+[node name="OneWayPlatform" parent="Platforms/Basic" unique_id=1434721437 instance=ExtResource("4_n3k1t")]
+position = Vector2(50, 660)
+IsWhite = true
+
+[node name="CameraPath" parent="." unique_id=1033517817 instance=ExtResource("5_iiw0q")]
+curve = SubResource("Curve2D_jum3j")
+
+[node name="AreaStartingCamera" type="Area2D" parent="." unique_id=1955147348]
+position = Vector2(180, 400)
+collision_layer = 7
+collision_mask = 7
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartingCamera" unique_id=1030527192]
+scale = Vector2(18, 1)
+shape = SubResource("RectangleShape2D_foxie")
+debug_color = Color(0.7592278, 0.18339637, 0.99999994, 0.41960785)
+
+[node name="WinArea" parent="." unique_id=1347027364 instance=ExtResource("7_ysplb")]
+position = Vector2(180, -1190)
+scale = Vector2(18, 1)

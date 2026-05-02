@@ -1,6 +1,8 @@
 using Godot;
-using ContrastClimb.characters.player;
 using ContrastClimb.utils;
+using ContrastClimb.utils.enums;
+
+namespace ContrastClimb.characters.player;
 
 public partial class Player : CharacterBody2D
 {

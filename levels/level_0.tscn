@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="2_foxie"]
 [ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_c4pne"]
 [ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="4_jum3j"]
-[ext_resource type="Script" uid="uid://djsq5lyo0emvh" path="res://utils/camera/AreaStartingCamera.cs" id="6_7d3si"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="7_jum3j"]
 
 [sub_resource type="Curve2D" id="Curve2D_jum3j"]
@@ -103,7 +102,6 @@ position = Vector2(50, -1010)
 IsWhite = true
 
 [node name="CameraPath" parent="." unique_id=1033517817 instance=ExtResource("4_jum3j")]
-position = Vector2(180, 400)
 curve = SubResource("Curve2D_jum3j")
 
 [node name="AreaStartingCamera" type="Area2D" parent="." unique_id=1955147348]
@@ -111,7 +109,6 @@ position = Vector2(180, 400)
 collision_layer = 7
 collision_mask = 7
 monitorable = false
-script = ExtResource("6_7d3si")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartingCamera" unique_id=1030527192]
 scale = Vector2(18, 1)

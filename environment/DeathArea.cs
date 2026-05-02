@@ -1,5 +1,8 @@
 using Godot;
-using System;
+using ContrastClimb.utils;
+using ContrastClimb.characters.player;
+
+namespace ContrastClimb.environment;
 
 public partial class DeathArea : Area2D
 {

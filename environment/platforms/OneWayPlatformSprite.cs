@@ -1,6 +1,7 @@
 using Godot;
-using System;
 using ContrastClimb.utils;
+
+namespace ContrastClimb.environment.platforms;
 
 public partial class OneWayPlatformSprite : PlatformSprite
 {

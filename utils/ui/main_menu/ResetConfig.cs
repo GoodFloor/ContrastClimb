@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace ContrastClimb.utils.ui.main_menu;
 
 public partial class ResetConfig : Button
 {

@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace ContrastClimb.utils;
 
 public partial class LevelRoot : Node2D
 {

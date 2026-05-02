@@ -1,4 +1,4 @@
-namespace ContrastClimb.utils;
+namespace ContrastClimb.utils.enums;
 
 public enum ECollisionMask
 {
