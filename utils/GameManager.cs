@@ -80,9 +80,11 @@ public partial class GameManager : Node
 
             // TODO: Save level score
 
+            // If there is a next level - unlock it and load it
             if (_currentLevelId >= Progress.LevelCount - 1) return;
             _currentLevelId++;
             Global.Progress.UnlockLevel(_currentLevelId);
+            _levelSelection.UnlockLevel(_currentLevelId);
             Global.Progress.LatestLevelId = _currentLevelId;
             PreloadLevel($"level_{_currentLevelId}");
             InstantiateLoadedLevel();

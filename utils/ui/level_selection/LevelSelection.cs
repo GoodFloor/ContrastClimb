@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 namespace ContrastClimb.utils.ui.level_selection;
@@ -6,6 +7,7 @@ public partial class LevelSelection : Control
 {
     private GridContainer _levelGrid;
     private PackedScene _levelSelectorButton;
+    private List<LevelSelectorButton> _levelSelectorButtons;
 
     public override void _Ready()
     {
@@ -13,6 +15,7 @@ public partial class LevelSelection : Control
         
         _levelGrid = GetNode<GridContainer>("LevelGrid");
         _levelSelectorButton = ResourceLoader.Load<PackedScene>("res://utils/ui/level_selection/level_selector_button.tscn");
+        _levelSelectorButtons = [];
     }
 
     public void GenerateLevelsList()
@@ -28,8 +31,17 @@ public partial class LevelSelection : Control
             if (!Global.Progress.IsLevelUnlocked($"level_{i}"))
                 newButton.Disabled = true;
             
-            
+            _levelSelectorButtons.Add(newButton);
         }
-        
+    }
+
+    public void UnlockLevel(int levelId)
+    {
+        _levelSelectorButtons[levelId].Disabled = false;
+    }
+
+    public void ChangeScore(int levelId, int newScore)
+    {
+        _levelSelectorButtons[levelId].LevelScore = newScore;
     }
 }
