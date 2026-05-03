@@ -8,5 +8,6 @@ public partial class ResetConfig : Button
     {
         base._Pressed();
         Global.Config.ResetConfig();
+        Global.Progress.ResetProgress();
     }
 }

@@ -15,6 +15,8 @@ public partial class GameManager : Node
     private Control _winScreen;
     private Control _failScreen;
     
+    private int _currentLevelId;
+    
     
     public override void _Ready()
     {
@@ -36,8 +38,9 @@ public partial class GameManager : Node
         PauseGame();
         
         _levelSelection.GenerateLevelsList();
-        
-        PreloadLevel("level_0");
+
+        _currentLevelId = Global.Progress.LatestLevelId;
+        PreloadLevel($"level_{_currentLevelId}");
         InstantiateLoadedLevel();
     }
 
@@ -57,9 +60,11 @@ public partial class GameManager : Node
         _uiRoot.Visible = false;
     }
 
-    public void PlayLevel(string levelName)
+    public void PlayLevel(int levelId)
     {
-        PreloadLevel(levelName);
+        _currentLevelId = levelId;
+        
+        PreloadLevel($"level_{_currentLevelId}");
         InstantiateLoadedLevel();
         ResumeGame();
     }
@@ -72,6 +77,15 @@ public partial class GameManager : Node
         if (success)
         {
             _winScreen.Visible = true;
+
+            // TODO: Save level score
+
+            if (_currentLevelId >= Progress.LevelCount - 1) return;
+            _currentLevelId++;
+            Global.Progress.UnlockLevel(_currentLevelId);
+            Global.Progress.LatestLevelId = _currentLevelId;
+            PreloadLevel($"level_{_currentLevelId}");
+            InstantiateLoadedLevel();
         }
         else
         {

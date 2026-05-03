@@ -40,7 +40,7 @@ public partial class LevelSelectorButton : Button
     {
         base._Pressed();
         
-        Global.GameManager.PlayLevel($"level_{_levelId}");
+        Global.GameManager.PlayLevel(_levelId);
     }
     
     
