@@ -5,7 +5,7 @@ namespace ContrastClimb.utils;
 
 public partial class Config : GodotObject
 {
-    private string _configPath = "res://config.cfg";
+    private const string ConfigPath = "res://config.cfg";
     private ConfigFile _configFile = new ConfigFile();
     public EMovementType Steering
     {
@@ -13,7 +13,7 @@ public partial class Config : GodotObject
         set
         {
             _configFile.SetValue("gameplay", "steering", (int)value);
-            _configFile.Save(_configPath);
+            _configFile.Save(ConfigPath);
         } 
     }
     
@@ -22,7 +22,7 @@ public partial class Config : GodotObject
     /// </summary>
     public void LoadConfig()
     {
-        _configFile.Load(_configPath);
+        _configFile.Load(ConfigPath);
         
         GenerateDefaultConfig();
     }
@@ -46,7 +46,7 @@ public partial class Config : GodotObject
         }
         
         
-        _configFile.Save(_configPath);
+        _configFile.Save(ConfigPath);
     }
 
     public void ResetConfig()

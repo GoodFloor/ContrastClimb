@@ -1,3 +1,4 @@
+using ContrastClimb.utils.ui.level_selection;
 using Godot;
 
 namespace ContrastClimb.utils;
@@ -10,7 +11,7 @@ public partial class GameManager : Node
 
     private CanvasLayer _uiRoot;
     private Control _mainMenu;
-    private Control _levelSelection;
+    private LevelSelection _levelSelection;
     private Control _winScreen;
     private Control _failScreen;
     
@@ -18,17 +19,23 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         Global.GameManager = this;
+        
         Global.Config = new Config();
         Global.Config.LoadConfig();
+        
+        Global.Progress = new Progress();
+        Global.Progress.LoadProgress();
         
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
-        _levelSelection = _uiRoot.GetNode<Control>("LevelSelection");
+        _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
         _winScreen = _uiRoot.GetNode<Control>("WinScreen");
         _failScreen = _uiRoot.GetNode<Control>("FailScreen");
         
         PauseGame();
+        
+        _levelSelection.GenerateLevelsList();
         
         PreloadLevel("level_0");
         InstantiateLoadedLevel();
