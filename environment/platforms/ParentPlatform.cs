@@ -8,11 +8,11 @@ public partial class ParentPlatform : StaticBody2D
     protected bool IsWhite;
 
     protected bool IsActive;
-    protected PlatformSprite Sprite;
+    protected ParentPlatformSprite Sprite;
 
     public override void _Ready()
     {
-        Sprite = GetNode<PlatformSprite>("PlatformSprite");
+        Sprite = GetNode<ParentPlatformSprite>("PlatformSprite");
         
         if (IsWhite)
         {
