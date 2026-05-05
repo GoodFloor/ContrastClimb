@@ -18,7 +18,7 @@ public partial class GameManager : Node
     
     private int _currentLevelId;
 
-    private int colorChangesUsed;
+    private int _colorChangesUsed;
     
     
     public override void _Ready()
@@ -52,7 +52,7 @@ public partial class GameManager : Node
         base._Input(@event);
 
         if (@event.IsActionPressed("switch_color"))
-            colorChangesUsed++;
+            _colorChangesUsed++;
     }
 
     public void PauseGame()
@@ -90,11 +90,11 @@ public partial class GameManager : Node
             _winScreen.Visible = true;
 
             int score;
-            if (colorChangesUsed < _currentInstanceLevel.ScoreTier3)
+            if (_colorChangesUsed < _currentInstanceLevel.ScoreTier3)
                 score = 3;
-            else if (colorChangesUsed < _currentInstanceLevel.ScoreTier2)
+            else if (_colorChangesUsed < _currentInstanceLevel.ScoreTier2)
                 score = 2;
-            else if (colorChangesUsed < _currentInstanceLevel.ScoreTier1)
+            else if (_colorChangesUsed < _currentInstanceLevel.ScoreTier1)
                 score = 1;
             else
                 score = 0;
@@ -144,7 +144,7 @@ public partial class GameManager : Node
         _currentInstanceLevel?.QueueFree();
         
         // Reset the score
-        colorChangesUsed = 0;
+        _colorChangesUsed = 0;
         
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
         _levelRoot.AddChild(_currentInstanceLevel);

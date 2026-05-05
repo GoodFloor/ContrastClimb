@@ -64,6 +64,8 @@ public partial class Player : CharacterBody2D
         CollisionMask = _currentColor;
 
         ReloadMovementConfig();
+        
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
     }
 
     /// <summary>
