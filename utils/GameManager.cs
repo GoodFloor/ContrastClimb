@@ -1,3 +1,4 @@
+using ContrastClimb.levels;
 using ContrastClimb.utils.ui.level_selection;
 using Godot;
 
@@ -7,7 +8,7 @@ public partial class GameManager : Node
 {
     private Node2D _levelRoot;
     private PackedScene _currentLoadedLevel;
-    private Node2D _currentInstanceLevel;
+    private ParentLevel _currentInstanceLevel;
 
     private CanvasLayer _uiRoot;
     private Control _mainMenu;
@@ -16,6 +17,8 @@ public partial class GameManager : Node
     private Control _failScreen;
     
     private int _currentLevelId;
+
+    private int colorChangesUsed;
     
     
     public override void _Ready()
@@ -42,6 +45,14 @@ public partial class GameManager : Node
         _currentLevelId = Global.Progress.LatestLevelId;
         PreloadLevel($"level_{_currentLevelId}");
         InstantiateLoadedLevel();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (@event.IsActionPressed("switch_color"))
+            colorChangesUsed++;
     }
 
     public void PauseGame()
@@ -78,7 +89,21 @@ public partial class GameManager : Node
         {
             _winScreen.Visible = true;
 
-            // TODO: Save level score
+            int score;
+            if (colorChangesUsed < _currentInstanceLevel.ScoreTier3)
+                score = 3;
+            else if (colorChangesUsed < _currentInstanceLevel.ScoreTier2)
+                score = 2;
+            else if (colorChangesUsed < _currentInstanceLevel.ScoreTier1)
+                score = 1;
+            else
+                score = 0;
+
+            if (score > Global.Progress.GetLevelScore(_currentLevelId))
+            {
+                Global.Progress.SetLevelScore(_currentLevelId, score);
+                _levelSelection.ChangeScore(_currentLevelId, score);
+            }
 
             // If there is a next level - unlock it and load it
             if (_currentLevelId >= Progress.LevelCount - 1) return;
@@ -118,7 +143,10 @@ public partial class GameManager : Node
         // Remove previously loaded level before loading a new one
         _currentInstanceLevel?.QueueFree();
         
-        _currentInstanceLevel = _currentLoadedLevel.Instantiate<Node2D>();
+        // Reset the score
+        colorChangesUsed = 0;
+        
+        _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
         _levelRoot.AddChild(_currentInstanceLevel);
     }
 }

@@ -49,6 +49,9 @@ point_count = 2
 
 [node name="Level_" type="Node2D" unique_id=469552005]
 script = ExtResource("1_btoec")
+ScoreTier1 = 3
+ScoreTier2 = 2
+ScoreTier3 = 1
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_gwceb")]
 position = Vector2(180, 800)

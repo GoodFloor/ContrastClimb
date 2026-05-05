@@ -26,7 +26,7 @@ public partial class LevelSelection : Control
             _levelGrid.AddChild(newButton);
             
             newButton.LevelId = i;
-            newButton.LevelScore = Global.Progress.GetLevelScore($"level_{i}");
+            newButton.LevelScore = Global.Progress.GetLevelScore(i);
 
             if (!Global.Progress.IsLevelUnlocked($"level_{i}"))
                 newButton.Disabled = true;

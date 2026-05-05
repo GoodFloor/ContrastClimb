@@ -3,7 +3,7 @@ using ContrastClimb.utils;
 
 namespace ContrastClimb.environment.platforms;
 
-public partial class OneWayPlatformSprite : PlatformSprite
+public partial class OneWayPlatformSprite : ParentPlatformSprite
 {
     public override void HidePlatform()
     {

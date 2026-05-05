@@ -1,11 +1,16 @@
 using Godot;
 using ContrastClimb.characters.player;
+using ContrastClimb.utils;
 
 namespace ContrastClimb.levels;
 
 public partial class ParentLevel : Node2D
 {
-    private utils.CameraPath _cameraPath;
+    [Export] public int ScoreTier1;
+    [Export] public int ScoreTier2;
+    [Export] public int ScoreTier3;
+    
+    private CameraPath _cameraPath;
     private Area2D _cameraStartArea;
 
     public override void _Ready()

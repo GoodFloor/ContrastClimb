@@ -4,7 +4,7 @@ namespace ContrastClimb.utils;
 
 public partial class Progress : GodotObject
 {
-    public const int LevelCount = 10;
+    public const int LevelCount = 2;
     
     private const string ProgressPath = "user://progress.cfg";
     private const string Password = "f31oijzvc";
@@ -60,14 +60,14 @@ public partial class Progress : GodotObject
         _progressFile.SaveEncryptedPass(ProgressPath, Password);
     }
     
-    public int GetLevelScore(string levelName)
+    public int GetLevelScore(int levelId)
     {
-        return (int)_progressFile.GetValue(levelName, "score");
+        return (int)_progressFile.GetValue($"level_{levelId}", "score");
     }
     
-    public void SetLevelScore(string levelName, int score)
+    public void SetLevelScore(int levelId, int score)
     {
-        _progressFile.SetValue(levelName, "score", score);
+        _progressFile.SetValue($"level_{levelId}", "score", score);
         _progressFile.SaveEncryptedPass(ProgressPath, Password);
     }
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="2_h0kjv"]
 [ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="3_1givh"]
 [ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_n3k1t"]
-[ext_resource type="PackedScene" path="res://utils/camera/camera_path.tscn" id="5_iiw0q"]
+[ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="5_iiw0q"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="7_ysplb"]
 
 [sub_resource type="Curve2D" id="Curve2D_jum3j"]
@@ -17,6 +17,9 @@ point_count = 2
 
 [node name="Level_" type="Node2D" unique_id=469552005]
 script = ExtResource("1_icvtc")
+ScoreTier1 = 3
+ScoreTier2 = 2
+ScoreTier3 = 1
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_h0kjv")]
 position = Vector2(180, 800)
