@@ -1,3 +1,4 @@
+using ContrastClimb.utils.enums;
 using Godot;
 
 namespace ContrastClimb.environment.platforms;
@@ -12,6 +13,8 @@ public partial class ParentPlatform : StaticBody2D
 
     public override void _Ready()
     {
+        base._Ready();
+        
         Sprite = GetNode<ParentPlatformSprite>("PlatformSprite");
         
         if (IsWhite)
@@ -20,7 +23,7 @@ public partial class ParentPlatform : StaticBody2D
             Sprite.HidePlatform();
             Sprite.MakeLight();
             
-            CollisionLayer = 2;
+            CollisionLayer = (uint)ECollisionMask.WhiteDownwards;
         }
         else
         {
@@ -28,7 +31,7 @@ public partial class ParentPlatform : StaticBody2D
             Sprite.RevealPlatform();
             Sprite.MakeDark();
             
-            CollisionLayer = 1;
+            CollisionLayer = (uint)ECollisionMask.BlackDownwards;
         }
         
     }
@@ -42,7 +45,7 @@ public partial class ParentPlatform : StaticBody2D
         }
     }
 
-    protected void SwitchColor()
+    protected virtual void SwitchColor()
     {
         IsActive = !IsActive;
         
@@ -50,5 +53,10 @@ public partial class ParentPlatform : StaticBody2D
             Sprite.RevealPlatform();
         else
             Sprite.HidePlatform();
+    }
+
+    public virtual void PlayerLanded()
+    {
+        // Default: Do nothing
     }
 }

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud2i"]
 size = Vector2(16, 16)
 
-[node name="OneWayLightLeft" type="StaticBody2D" unique_id=1186250729]
+[node name="OneWayLightCenter" type="StaticBody2D" unique_id=1186250729]
 script = ExtResource("1_h5d6p")
 IsWhite = true
 

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud2i"]
 size = Vector2(16, 16)
 
-[node name="OneWayLightLeft" type="StaticBody2D" unique_id=1186250729]
+[node name="OneWayDarkLeft" type="StaticBody2D" unique_id=1186250729]
 script = ExtResource("1_upiqg")
 
 [node name="PlatformSprite" type="Node2D" parent="." unique_id=1257827499]

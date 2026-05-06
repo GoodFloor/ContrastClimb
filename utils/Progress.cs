@@ -4,7 +4,7 @@ namespace ContrastClimb.utils;
 
 public partial class Progress : GodotObject
 {
-    public const int LevelCount = 2;
+    public const int LevelCount = 3;
     
     private const string ProgressPath = "user://progress.cfg";
     private const string Password = "f31oijzvc";

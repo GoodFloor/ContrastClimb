@@ -1,3 +1,4 @@
+using ContrastClimb.environment.platforms;
 using Godot;
 
 namespace ContrastClimb.characters.player;
@@ -23,6 +24,7 @@ public abstract partial class Movement(Player player) : RefCounted
         if (velocity.Y == 0f)
         {
             velocity.Y = delta * -JumpSpeed;
+            Landed();
         }
         else
         {
@@ -33,5 +35,14 @@ public abstract partial class Movement(Player player) : RefCounted
         velocity.X = delta * GetVelocityX() * MoveSpeed;
         
         Player.Velocity = velocity;
+    }
+
+    private void Landed()
+    {
+        var collision = Player.GetLastSlideCollision();
+        var collider = collision?.GetCollider();
+        if (collider is not ParentPlatform colliderPlatform) return;
+
+        colliderPlatform.PlayerLanded();
     }
 }

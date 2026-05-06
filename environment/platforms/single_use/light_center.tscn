@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://k7wqo5pvpdci"]
+
+[ext_resource type="Script" uid="uid://bi5mosul5fvg1" path="res://environment/platforms/single_use/SingleUsePlatform.cs" id="1_vdq2a"]
+[ext_resource type="Script" uid="uid://dm1s31cg38yep" path="res://environment/platforms/single_use/PlatformSprite.cs" id="2_75brv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud2i"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdq2a"]
+size = Vector2(16, 4)
+
+[node name="SingleUseLightCenter" type="StaticBody2D" unique_id=1186250729]
+script = ExtResource("1_vdq2a")
+IsWhite = true
+
+[node name="PlatformSprite" type="Node2D" parent="." unique_id=1257827499]
+script = ExtResource("2_75brv")
+
+[node name="ColorRect" type="ColorRect" parent="PlatformSprite" unique_id=22576023]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 7.999998
+offset_bottom = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=114715257]
+shape = SubResource("RectangleShape2D_0ud2i")
+debug_color = Color(0.8545315, 0.67646104, 0.2534336, 0.5019608)
+
+[node name="PlatformTop" type="Area2D" parent="." unique_id=565305039]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformTop" unique_id=593676221]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_vdq2a")
+
+[connection signal="body_entered" from="PlatformTop" to="." method="OnBodyLanded"]

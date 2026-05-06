@@ -47,6 +47,7 @@ public partial class Player : CharacterBody2D
         {
             CollisionMask = _currentColor & (uint)ECollisionMask.UpwardsAndSolid;
         }
+        CollisionLayer = CollisionMask;
         MoveAndSlide();
     }
 
@@ -62,6 +63,7 @@ public partial class Player : CharacterBody2D
             Modulate = GColors.Light;
         }
         CollisionMask = _currentColor;
+        CollisionLayer = CollisionMask;
 
         ReloadMovementConfig();
         
