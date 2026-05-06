@@ -134,6 +134,7 @@ grow_vertical = 2
 columns = 3
 
 [node name="LevelSelectorButton2" parent="UIRoot/LevelSelection/LevelGrid" unique_id=2112957645 instance=ExtResource("7_dpd3l")]
+visible = false
 layout_mode = 2
 text = "Level -1"
 LevelId = -1

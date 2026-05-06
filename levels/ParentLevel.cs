@@ -9,6 +9,7 @@ public partial class ParentLevel : Node2D
     [Export] public int ScoreTier1;
     [Export] public int ScoreTier2;
     [Export] public int ScoreTier3;
+    [Export(PropertyHint.File, "*.ogv")] public string Cutscene;
     
     private CameraPath _cameraPath;
     private Area2D _cameraStartArea;

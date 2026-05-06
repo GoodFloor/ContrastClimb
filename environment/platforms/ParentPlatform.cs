@@ -7,7 +7,6 @@ public partial class ParentPlatform : StaticBody2D
 {
     [Export] 
     protected bool IsWhite;
-
     protected bool IsActive;
     protected ParentPlatformSprite Sprite;
 
