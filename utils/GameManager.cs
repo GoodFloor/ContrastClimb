@@ -10,6 +10,10 @@ public partial class GameManager : Node
     private PackedScene _currentLoadedLevel;
     private ParentLevel _currentInstanceLevel;
 
+    private Node _cutsceneRoot;
+    private PackedScene _cutsceneTemplate;
+    private cutscenes.Cutscene _cutsceneInstance;
+
     private CanvasLayer _uiRoot;
     private Control _mainMenu;
     private LevelSelection _levelSelection;
@@ -19,6 +23,8 @@ public partial class GameManager : Node
     private int _currentLevelId;
 
     private int _colorChangesUsed;
+
+    private bool _cutsceneScheduled;
     
     
     public override void _Ready()
@@ -32,19 +38,21 @@ public partial class GameManager : Node
         Global.Progress.LoadProgress();
         
         _levelRoot = GetNode<Node2D>("LevelRoot");
+        _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
         _winScreen = _uiRoot.GetNode<Control>("WinScreen");
         _failScreen = _uiRoot.GetNode<Control>("FailScreen");
         
+        _cutsceneTemplate = ResourceLoader.Load<PackedScene>("res://cutscenes/cutscene.tscn");
+        
         PauseGame();
         
         _levelSelection.GenerateLevelsList();
 
         _currentLevelId = Global.Progress.LatestLevelId;
-        PreloadLevel($"level_{_currentLevelId}");
-        InstantiateLoadedLevel();
+        LoadNewLevel($"level_{_currentLevelId}");
     }
 
     public override void _Input(InputEvent @event)
@@ -67,16 +75,19 @@ public partial class GameManager : Node
 
     public void ResumeGame()
     {
-        GetTree().Paused = false;
         _uiRoot.Visible = false;
+        GetTree().Paused = false;
+        if (_cutsceneScheduled)
+        {
+            
+        }
     }
 
     public void PlayLevel(int levelId)
     {
         _currentLevelId = levelId;
         
-        PreloadLevel($"level_{_currentLevelId}");
-        InstantiateLoadedLevel();
+        LoadNewLevel($"level_{_currentLevelId}");
         ResumeGame();
     }
 
@@ -111,8 +122,7 @@ public partial class GameManager : Node
             Global.Progress.UnlockLevel(_currentLevelId);
             _levelSelection.UnlockLevel(_currentLevelId);
             Global.Progress.LatestLevelId = _currentLevelId;
-            PreloadLevel($"level_{_currentLevelId}");
-            InstantiateLoadedLevel();
+            LoadNewLevel($"level_{_currentLevelId}");
         }
         else
         {
@@ -133,11 +143,6 @@ public partial class GameManager : Node
         _levelSelection.Visible = true;
     }
 
-    private void PreloadLevel(string levelName)
-    {
-        _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
-    }
-
     private void InstantiateLoadedLevel()
     {
         // Remove previously loaded level before loading a new one
@@ -145,8 +150,41 @@ public partial class GameManager : Node
         
         // Reset the score
         _colorChangesUsed = 0;
-        
+
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
+
+        if (_currentInstanceLevel.Cutscene == null)
+        {
+            _levelRoot.AddChild(_currentInstanceLevel);
+        }
+        else
+        {
+            _cutsceneScheduled = true;
+            LoadCutscene(_currentInstanceLevel.Cutscene);
+        }
+        
+    }
+
+    private void LoadNewLevel(string levelName)
+    {
+        _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
+        
+        InstantiateLoadedLevel();
+    }
+
+    private void LoadCutscene(string path)
+    {
+        _cutsceneInstance?.QueueFree();
+        _cutsceneInstance = _cutsceneTemplate.Instantiate<cutscenes.Cutscene>();
+        
+        _cutsceneRoot.AddChild(_cutsceneInstance);
+        _cutsceneInstance.SetSource(path);
+    }
+    
+    public void EndCutscene()
+    {
+        _cutsceneScheduled = false;
+        _cutsceneInstance?.QueueFree();
         _levelRoot.AddChild(_currentInstanceLevel);
     }
 }

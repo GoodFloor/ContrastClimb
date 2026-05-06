@@ -18,6 +18,9 @@ script = ExtResource("1_58e6k")
 process_mode = 1
 script = ExtResource("2_g2d5c")
 
+[node name="CutsceneRoot" type="CanvasLayer" parent="." unique_id=186782642]
+process_mode = 1
+
 [node name="UIRoot" type="CanvasLayer" parent="." unique_id=278079975]
 process_mode = 2
 

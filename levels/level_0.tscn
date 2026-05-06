@@ -1,13 +1,30 @@
-[gd_scene format=3 uid="uid://feesnagm2y2e"]
+[gd_scene format=3 uid="uid://c2bx8l53qnlcq"]
 
-[ext_resource type="Script" uid="uid://x7t26qnl83q5" path="res://levels/CutsceneLevel.cs" id="1_pqqg8"]
-[ext_resource type="VideoStream" uid="uid://ba4uc26ri71p8" path="res://cutscenes/cutscene1.ogv" id="2_823pn"]
+[sub_resource type="CSharpScript" id="CSharpScript_2vvn8"]
+script/source = "using ContrastClimb.utils;
+using Godot;
+
+namespace ContrastClimb.levels;
+
+public partial class CutsceneLevel : ParentLevel
+{
+    public override void _Ready()
+    {
+        GetNode<Button>(\"Button\").Pressed += () =>
+        {
+            Global.GameManager.EndLevel(true);
+        };
+    }
+}"
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_eus5j"]
 
 [node name="Level_2" type="Node2D" unique_id=469552005]
-script = ExtResource("1_pqqg8")
+script = SubResource("CSharpScript_2vvn8")
 ScoreTier1 = 1
 ScoreTier2 = 1
 ScoreTier3 = 1
+Cutscene = null
 
 [node name="Control" type="Control" parent="." unique_id=417114969]
 layout_mode = 3
@@ -22,7 +39,7 @@ layout_mode = 0
 offset_right = 484.0
 offset_bottom = 1080.0
 scale = Vector2(0.735, 0.735)
-stream = ExtResource("2_823pn")
+stream = SubResource("VideoStreamTheora_eus5j")
 autoplay = true
 
 [node name="Button" type="Button" parent="." unique_id=1977791143]
