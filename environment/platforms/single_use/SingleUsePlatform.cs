@@ -1,41 +1,34 @@
 using System;
-using ContrastClimb.characters.player;
 using Godot;
+using Godot.Collections;
 
 namespace ContrastClimb.environment.platforms.single_use;
 
 public partial class SingleUsePlatform : ParentPlatform
 {
-    private Area2D _platformTop;
     private double _delay = 0.5;
     private bool _used;
+
     public override void _Ready()
     {
         base._Ready();
-        
-        _platformTop = GetNode<Area2D>("PlatformTop");
-        if (!IsActive)
-            _platformTop.CollisionMask = 0;
-        else
-            _platformTop.CollisionMask = CollisionLayer;
-    }
 
-    protected override void SwitchColor()
-    {
-        if (_used) return;
-        
-        base.SwitchColor();
-
-        if (!IsActive)
-            _platformTop.CollisionMask = 0;
+        if (IsWhite)
+            CollisionLayer += 256;
         else
-            _platformTop.CollisionMask = CollisionLayer;
+            CollisionLayer += 512;
     }
 
     public override void PlayerLanded()
     {
         base.PlayerLanded();
         
+        if (_used) return;
+        _used = true;
+        
+        DestroyNeighbours(GetNode<Area2D>("ScannerLeft").GetOverlappingBodies());
+        DestroyNeighbours(GetNode<Area2D>("ScannerRight").GetOverlappingBodies());
+
         WaitAndDestroy();
     }
 
@@ -51,4 +44,14 @@ public partial class SingleUsePlatform : ParentPlatform
             GD.PrintErr(e);
         }
     }
+
+    private void DestroyNeighbours(Array<Node2D> neighbours)
+    {
+        foreach (var neighbour in neighbours)
+        {
+            if (neighbour is not SingleUsePlatform platform) return;
+            platform.PlayerLanded();
+        }
+    }
+    
 }
