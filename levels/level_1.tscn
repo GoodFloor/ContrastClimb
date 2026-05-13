@@ -17,11 +17,13 @@ point_count = 2
 
 [node name="Level_0" type="Node2D" unique_id=469552005]
 script = ExtResource("1_yi3jx")
+ScoreTier1 = 3
+ScoreTier2 = 2
+ScoreTier3 = 1
 Cutscene = "uid://ba4uc26ri71p8"
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_7d3si")]
 position = Vector2(180, 800)
-scale = Vector2(0.5, 0.5)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1977420596]
 

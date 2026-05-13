@@ -53,10 +53,6 @@
 [ext_resource type="Texture2D" uid="uid://bxlli14d6v4lj" path="res://characters/player/test00/main_character.0047.png" id="51_hi11i"]
 [ext_resource type="Texture2D" uid="uid://dmpy6bp3803pt" path="res://characters/player/test00/main_character.0048.png" id="52_bubdi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxgcw"]
-radius = 13.0
-height = 108.0
-
 [sub_resource type="Animation" id="Animation_2obrb"]
 length = 0.001
 tracks/0/type = "value"
@@ -248,14 +244,14 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxgcw"]
+radius = 8.0
+height = 42.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1791503502]
+z_index = 1
 collision_mask = 5
 script = ExtResource("1_xxgcw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716405908]
-position = Vector2(0, -13)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_xxgcw")
 
 [node name="SlimeBody" type="Sprite2D" parent="." unique_id=1833845257]
 visible = false
@@ -288,4 +284,9 @@ position = Vector2(0, -36)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_1laae")
 animation = &"idle"
-frame_progress = 0.5753387
+frame = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716405908]
+position = Vector2(0, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xxgcw")

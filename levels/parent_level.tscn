@@ -23,7 +23,6 @@ ScoreTier3 = 1
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_h0kjv")]
 position = Vector2(180, 800)
-scale = Vector2(0.5, 0.5)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1977420596]
 
