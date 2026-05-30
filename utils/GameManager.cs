@@ -19,6 +19,7 @@ public partial class GameManager : Node
     private LevelSelection _levelSelection;
     private Control _winScreen;
     private Control _failScreen;
+    private Sprite2D _winScreenScore;
     
     private int _currentLevelId;
 
@@ -44,8 +45,14 @@ public partial class GameManager : Node
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
         _winScreen = _uiRoot.GetNode<Control>("WinScreen");
         _failScreen = _uiRoot.GetNode<Control>("FailScreen");
+        _winScreenScore = _winScreen.GetNode<Sprite2D>("Score");
         
         _cutsceneTemplate = ResourceLoader.Load<PackedScene>("res://cutscenes/cutscene.tscn");
+
+        Global.ScoreTexture = [GD.Load<Texture2D>("res://utils/ui/stars_0.png"), 
+            GD.Load<Texture2D>("res://utils/ui/stars_1.png"), 
+            GD.Load<Texture2D>("res://utils/ui/stars_2.png"), 
+            GD.Load<Texture2D>("res://utils/ui/stars_3.png")];
         
         PauseGame();
         
@@ -109,6 +116,8 @@ public partial class GameManager : Node
                 score = 1;
             else
                 score = 0;
+            
+            _winScreenScore.Texture = Global.ScoreTexture[score];
 
             if (score > Global.Progress.GetLevelScore(_currentLevelId))
             {

@@ -4,7 +4,7 @@ namespace ContrastClimb.utils.ui.level_selection;
 
 public partial class LevelSelectorButton : Button
 {
-    private Label _scoreLabel;
+    private Sprite2D _scoreLabel;
     private int _levelId;
     private int _levelScore;
     
@@ -25,7 +25,7 @@ public partial class LevelSelectorButton : Button
         set
         { 
             _levelScore = value;
-            _scoreLabel.Text = $"{_levelScore} / 3";
+            _scoreLabel.Texture = Global.ScoreTexture[_levelScore];
         }
     }
 
@@ -33,7 +33,10 @@ public partial class LevelSelectorButton : Button
     {
         base._Ready();
         
-        _scoreLabel = GetNode<Label>("Score");
+        _scoreLabel = GetNode<Sprite2D>("Score");
+        
+        
+        
     }
 
     public override void _Pressed()

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c5ofplaradvvf" path="res://utils/ui/main_menu/LevelsButton.cs" id="4_1inmq"]
 [ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/main_menu/ResetConfig.cs" id="5_xvya0"]
 [ext_resource type="Script" uid="uid://djnqe0f13lny0" path="res://utils/ui/game_over/BackButton.cs" id="6_ds37j"]
+[ext_resource type="Texture2D" uid="uid://dv6e2ubr4lvtr" path="res://utils/ui/stars_0.png" id="7_2ik7w"]
 [ext_resource type="PackedScene" uid="uid://bxirwj51vyjh7" path="res://utils/ui/level_selection/level_selector_button.tscn" id="7_dpd3l"]
 [ext_resource type="Script" uid="uid://deejsk3obhr03" path="res://utils/ui/level_selection/LevelSelection.cs" id="8_m5by7"]
 
@@ -80,6 +81,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Score" type="Sprite2D" parent="UIRoot/WinScreen" unique_id=385948457]
+position = Vector2(33.5, -76)
+texture = ExtResource("7_2ik7w")
+
 [node name="Label" type="Label" parent="UIRoot/WinScreen" unique_id=1302292604]
 layout_mode = 2
 text = "You won!"
@@ -113,6 +118,7 @@ text = "Go back"
 script = ExtResource("6_ds37j")
 
 [node name="LevelSelection" type="Control" parent="UIRoot" unique_id=1339949896]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
