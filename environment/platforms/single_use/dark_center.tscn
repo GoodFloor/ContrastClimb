@@ -7,7 +7,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnc88"]
-size = Vector2(16, 0.125)
+size = Vector2(1, 16)
 
 [node name="SingleUseDarkCenter" type="StaticBody2D" unique_id=1186250729]
 script = ExtResource("1_fnc88")
@@ -25,11 +25,18 @@ offset_bottom = 8.0
 shape = SubResource("RectangleShape2D_0ud2i")
 debug_color = Color(0.0627451, 0.11372549, 0.25882354, 0.5019608)
 
-[node name="PlatformTop" type="Area2D" parent="." unique_id=1216178490]
-monitorable = false
+[node name="ScannerLeft" type="Area2D" parent="." unique_id=1506728329]
+collision_layer = 512
+collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformTop" unique_id=1974267111]
-position = Vector2(0, -8.0625)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScannerLeft" unique_id=97842045]
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_fnc88")
 
-[connection signal="body_entered" from="PlatformTop" to="." method="OnBodyLanded"]
+[node name="ScannerRight" type="Area2D" parent="." unique_id=654711349]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScannerRight" unique_id=266178727]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_fnc88")
