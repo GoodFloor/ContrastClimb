@@ -7,8 +7,9 @@ public partial class ParentPlatform : StaticBody2D
 {
     [Export] 
     protected bool IsWhite;
-    protected bool IsActive;
     protected ParentPlatformSprite Sprite;
+
+    private bool _isActive;
 
     public override void _Ready()
     {
@@ -18,7 +19,7 @@ public partial class ParentPlatform : StaticBody2D
         
         if (IsWhite)
         {
-            IsActive = false;
+            _isActive = false;
             Sprite.HidePlatform();
             Sprite.MakeLight();
             
@@ -26,7 +27,7 @@ public partial class ParentPlatform : StaticBody2D
         }
         else
         {
-            IsActive = true;
+            _isActive = true;
             Sprite.RevealPlatform();
             Sprite.MakeDark();
             
@@ -46,9 +47,9 @@ public partial class ParentPlatform : StaticBody2D
 
     protected virtual void SwitchColor()
     {
-        IsActive = !IsActive;
+        _isActive = !_isActive;
         
-        if (IsActive)
+        if (_isActive)
             Sprite.RevealPlatform();
         else
             Sprite.HidePlatform();

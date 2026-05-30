@@ -1,9 +1,9 @@
-using Godot;
 using ContrastClimb.utils;
+using Godot;
 
-namespace ContrastClimb.environment.platforms;
+namespace ContrastClimb.environment.platforms.spikes;
 
-public partial class OneWayPlatformSprite : ParentPlatformSprite
+public partial class PlatformSprite : ParentPlatformSprite
 {
     public override void HidePlatform()
     {
@@ -17,11 +17,11 @@ public partial class OneWayPlatformSprite : ParentPlatformSprite
 
     public override void MakeLight()
     {
-        GetNode<ColorRect>("ColorRect").Color = GColors.Light;
+        GetNode<Sprite2D>("Sprite").Modulate = GColors.Light;
     }
 
     public override void MakeDark()
     {
-        GetNode<ColorRect>("ColorRect").Color = GColors.Dark;
+        GetNode<Sprite2D>("Sprite").Modulate = GColors.Dark;
     }
 }

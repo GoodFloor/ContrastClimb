@@ -1,9 +1,8 @@
-[gd_scene format=3 uid="uid://bvkjkyhqm5im"]
+[gd_scene format=4 uid="uid://dyjfixklj3ij4"]
 
-[ext_resource type="Script" uid="uid://b68v0m2fyrg12" path="res://levels/DemoLevel.cs" id="1_7d3si"]
+[ext_resource type="Script" uid="uid://byrdti6y83dch" path="res://levels/ParentLevel.cs" id="1_obtcn"]
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="2_jum3j"]
-[ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="3_c4pne"]
-[ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_tfamw"]
+[ext_resource type="TileSet" uid="uid://cla2cpiwlyx7j" path="res://environment/environment_tile_set.tres" id="3_foxie"]
 [ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="5_dm5o4"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="6_obtcn"]
 
@@ -15,94 +14,19 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foxie"]
 
-[node name="Level_0" type="Node2D" unique_id=469552005]
-script = ExtResource("1_7d3si")
-ScoreTier1 = 3
-ScoreTier2 = 2
-ScoreTier3 = 1
-Cutscene = "uid://ba4uc26ri71p8"
+[node name="Level_" type="Node2D" unique_id=469552005]
+script = ExtResource("1_obtcn")
+ScoreTier1 = 4
+ScoreTier2 = 3
+ScoreTier3 = 2
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_jum3j")]
 position = Vector2(180, 800)
 
-[node name="Platforms" type="Node2D" parent="." unique_id=1977420596]
-
-[node name="Static" type="Node2D" parent="Platforms" unique_id=1234300566]
-
-[node name="Floor" parent="Platforms/Static" unique_id=2104119367 instance=ExtResource("3_c4pne")]
+[node name="Map" type="TileMapLayer" parent="." unique_id=1433248330]
 position = Vector2(0, 800)
-scale = Vector2(9, 1)
-
-[node name="LeftWall" parent="Platforms/Static" unique_id=535848991 instance=ExtResource("3_c4pne")]
-position = Vector2(0, 800)
-rotation = 3.1415927
-scale = Vector2(1, 50)
-
-[node name="RightWall" parent="Platforms/Static" unique_id=1316489267 instance=ExtResource("3_c4pne")]
-position = Vector2(400, 800)
-rotation = 3.1415927
-scale = Vector2(1, 50)
-
-[node name="Basic" type="Node2D" parent="Platforms" unique_id=2073250152]
-
-[node name="OneWayPlatform" parent="Platforms/Basic" unique_id=1434721437 instance=ExtResource("4_tfamw")]
-position = Vector2(50, 660)
-IsWhite = true
-
-[node name="OneWayPlatform2" parent="Platforms/Basic" unique_id=487331890 instance=ExtResource("4_tfamw")]
-position = Vector2(310, 660)
-IsWhite = true
-
-[node name="OneWayPlatform3" parent="Platforms/Basic" unique_id=1669957287 instance=ExtResource("4_tfamw")]
-position = Vector2(185, 505)
-scale = Vector2(2.5, 1)
-IsWhite = true
-
-[node name="OneWayPlatform4" parent="Platforms/Basic" unique_id=12420676 instance=ExtResource("4_tfamw")]
-position = Vector2(125, 370)
-scale = Vector2(2.5, 1)
-IsWhite = true
-
-[node name="OneWayPlatform5" parent="Platforms/Basic" unique_id=2077969626 instance=ExtResource("4_tfamw")]
-position = Vector2(150, 240)
-IsWhite = true
-
-[node name="OneWayPlatform6" parent="Platforms/Basic" unique_id=2005538918 instance=ExtResource("4_tfamw")]
-position = Vector2(310, 240)
-IsWhite = true
-
-[node name="OneWayPlatform7" parent="Platforms/Basic" unique_id=1031617069 instance=ExtResource("4_tfamw")]
-position = Vector2(125, 70)
-scale = Vector2(2.5, 1)
-IsWhite = true
-
-[node name="OneWayPlatform8" parent="Platforms/Basic" unique_id=1655180049 instance=ExtResource("4_tfamw")]
-position = Vector2(225.00002, -110)
-scale = Vector2(2.3, 1)
-IsWhite = true
-
-[node name="OneWayPlatform9" parent="Platforms/Basic" unique_id=1673352594 instance=ExtResource("4_tfamw")]
-position = Vector2(165, -290)
-scale = Vector2(2.1, 1)
-IsWhite = true
-
-[node name="OneWayPlatform10" parent="Platforms/Basic" unique_id=315882427 instance=ExtResource("4_tfamw")]
-position = Vector2(200, -470)
-scale = Vector2(1.75, 1)
-IsWhite = true
-
-[node name="OneWayPlatform11" parent="Platforms/Basic" unique_id=1981132926 instance=ExtResource("4_tfamw")]
-position = Vector2(70, -650)
-scale = Vector2(1.4, 1)
-IsWhite = true
-
-[node name="OneWayPlatform12" parent="Platforms/Basic" unique_id=1127855634 instance=ExtResource("4_tfamw")]
-position = Vector2(195, -830)
-IsWhite = true
-
-[node name="OneWayPlatform13" parent="Platforms/Basic" unique_id=1945539844 instance=ExtResource("4_tfamw")]
-position = Vector2(50, -1010)
-IsWhite = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAFAAAAAAAAAAAAAQAGAAAAAAAAAAAAAQAHAAAAAAAAAAAAAQAIAAAAAAAAAAAAAQAJAAAAAAAAAAAAAQD//wAAAAAAAAAAAQAKAAAAAAAAAAAAAQAAAPv/AQAAAAAAAgABAPv/AQAAAAAAAgACAPv/AQAAAAAAAgADAPv/AQAAAAAAAgACAPb/AQAAAAAAAgADAPb/AQAAAAAAAgAEAPb/AQAAAAAAAgAFAPb/AQAAAAAAAgAJAOz/AQAAAAAAAgAIAOz/AQAAAAAAAgAHAOz/AQAAAAAAAgAGAOz/AQAAAAAAAgAAAPH/AQAAAAAAAgABAPH/AQAAAAAAAgACAPH/AQAAAAAAAgADAPH/AQAAAAAAAgADAOf/AQAAAAAAAgAEAOf/AQAAAAAAAgACAOf/AQAAAAAAAgAFAOf/AQAAAAAAAgAAAOL/AQAAAAAAAgABAOL/AQAAAAAAAgACAOL/AQAAAAAAAgADAOL/AQAAAAAAAgAGAN3/AQAAAAAAAgAHAN3/AQAAAAAAAgAIAN3/AQAAAAAAAgAJAN3/AQAAAAAAAgAEANj/AQAAAAAAAgAFANj/AQAAAAAAAgAGANj/AQAAAAAAAgAHANj/AQAAAAAAAgACANP/AQAAAAAAAgADANP/AQAAAAAAAgAEANP/AQAAAAAAAgAFANP/AQAAAAAAAgAGAM7/AQAAAAAAAgAHAM7/AQAAAAAAAgAIAM7/AQAAAAAAAgAJAM7/AQAAAAAAAgACAM7/AQAAAAAAAgADAM7/AQAAAAAAAgAEAM7/AQAAAAAAAgAFAM7/AQAAAAAAAgAAAM7/AQAAAAAAAgABAM7/AQAAAAAAAgAKAP//AAAAAAAAAQAKAP7/AAAAAAAAAQAKAP3/AAAAAAAAAQAKAPz/AAAAAAAAAQAKAPv/AAAAAAAAAQAKAPr/AAAAAAAAAQAKAPn/AAAAAAAAAQAKAPj/AAAAAAAAAQAKAPf/AAAAAAAAAQAKAPb/AAAAAAAAAQAKAPX/AAAAAAAAAQAKAPT/AAAAAAAAAQAKAPP/AAAAAAAAAQAKAPL/AAAAAAAAAQAKAPH/AAAAAAAAAQAKAPD/AAAAAAAAAQAKAO//AAAAAAAAAQAKAO7/AAAAAAAAAQAKAO3/AAAAAAAAAQAKAOz/AAAAAAAAAQAKAOv/AAAAAAAAAQAKAOr/AAAAAAAAAQAKAOn/AAAAAAAAAQAKAOj/AAAAAAAAAQAKAOf/AAAAAAAAAQAKAOb/AAAAAAAAAQAKAOX/AAAAAAAAAQAKAOT/AAAAAAAAAQAKAOP/AAAAAAAAAQAKAOL/AAAAAAAAAQAKAOH/AAAAAAAAAQAKAOD/AAAAAAAAAQAKAN//AAAAAAAAAQAKAN7/AAAAAAAAAQAKAN3/AAAAAAAAAQAKANz/AAAAAAAAAQAKANv/AAAAAAAAAQAKANr/AAAAAAAAAQAKANn/AAAAAAAAAQAKANj/AAAAAAAAAQD/////AAAAAAAAAQD///7/AAAAAAAAAQD///3/AAAAAAAAAQD///z/AAAAAAAAAQD///v/AAAAAAAAAQD///r/AAAAAAAAAQD///n/AAAAAAAAAQD///j/AAAAAAAAAQD///f/AAAAAAAAAQD///b/AAAAAAAAAQD///X/AAAAAAAAAQD///T/AAAAAAAAAQD///P/AAAAAAAAAQD///L/AAAAAAAAAQD///H/AAAAAAAAAQD///D/AAAAAAAAAQD//+//AAAAAAAAAQD//+7/AAAAAAAAAQD//+3/AAAAAAAAAQD//+z/AAAAAAAAAQD//+v/AAAAAAAAAQD//+r/AAAAAAAAAQD//+n/AAAAAAAAAQD//+j/AAAAAAAAAQD//+f/AAAAAAAAAQD//+b/AAAAAAAAAQD//+X/AAAAAAAAAQD//+T/AAAAAAAAAQD//+P/AAAAAAAAAQD//+L/AAAAAAAAAQD//+H/AAAAAAAAAQD//+D/AAAAAAAAAQD//9//AAAAAAAAAQD//97/AAAAAAAAAQD//93/AAAAAAAAAQD//9z/AAAAAAAAAQD//9v/AAAAAAAAAQD//9r/AAAAAAAAAQD//9n/AAAAAAAAAQD//9j/AAAAAAAAAQD//9f/AAAAAAAAAQD//9b/AAAAAAAAAQD//9X/AAAAAAAAAQD//9T/AAAAAAAAAQD//9P/AAAAAAAAAQD//9L/AAAAAAAAAQD//9H/AAAAAAAAAQD//9D/AAAAAAAAAQD//8//AAAAAAAAAQD//87/AAAAAAAAAQD//83/AAAAAAAAAQD//8z/AAAAAAAAAQD//8v/AAAAAAAAAQD//8r/AAAAAAAAAQD//8n/AAAAAAAAAQD//8j/AAAAAAAAAQD//8f/AAAAAAAAAQD//8b/AAAAAAAAAQD//8X/AAAAAAAAAQD//8T/AAAAAAAAAQD//8P/AAAAAAAAAQD//8L/AAAAAAAAAQD//8H/AAAAAAAAAQD//8D/AAAAAAAAAQAKANf/AAAAAAAAAQAKANb/AAAAAAAAAQAKANX/AAAAAAAAAQAKANT/AAAAAAAAAQAKANP/AAAAAAAAAQAKANL/AAAAAAAAAQAKANH/AAAAAAAAAQAKAND/AAAAAAAAAQAKAM//AAAAAAAAAQAKAM7/AAAAAAAAAQAKAM3/AAAAAAAAAQAKAMz/AAAAAAAAAQAKAMv/AAAAAAAAAQAKAMr/AAAAAAAAAQAKAMn/AAAAAAAAAQAKAMj/AAAAAAAAAQAKAMf/AAAAAAAAAQAKAMb/AAAAAAAAAQAKAMX/AAAAAAAAAQAKAMT/AAAAAAAAAQAKAMP/AAAAAAAAAQAKAML/AAAAAAAAAQAKAMH/AAAAAAAAAQAKAMD/AAAAAAAAAQAKAL//AAAAAAAAAQAKAL7/AAAAAAAAAQAKAL3/AAAAAAAAAQAKALz/AAAAAAAAAQAKALv/AAAAAAAAAQAKALr/AAAAAAAAAQAKALn/AAAAAAAAAQAKALj/AAAAAAAAAQAKALf/AAAAAAAAAQAKALb/AAAAAAAAAQAKALX/AAAAAAAAAQAKALT/AAAAAAAAAQAKALP/AAAAAAAAAQAKALL/AAAAAAAAAQAKALH/AAAAAAAAAQAKALD/AAAAAAAAAQD//7//AAAAAAAAAQD//77/AAAAAAAAAQD//73/AAAAAAAAAQD//7z/AAAAAAAAAQD//7v/AAAAAAAAAQD//7r/AAAAAAAAAQD//7n/AAAAAAAAAQD//7j/AAAAAAAAAQD//7f/AAAAAAAAAQD//7b/AAAAAAAAAQD//7X/AAAAAAAAAQD//7T/AAAAAAAAAQD//7P/AAAAAAAAAQD//7L/AAAAAAAAAQD//7H/AAAAAAAAAQD//7D/AAAAAAAAAQA=")
+tile_set = ExtResource("3_foxie")
 
 [node name="CameraPath" parent="." unique_id=1033517817 instance=ExtResource("5_dm5o4")]
 curve = SubResource("Curve2D_jum3j")
@@ -121,5 +45,3 @@ debug_color = Color(0.7592278, 0.18339637, 0.99999994, 0.41960785)
 [node name="WinArea" parent="." unique_id=1347027364 instance=ExtResource("6_obtcn")]
 position = Vector2(180, -1190)
 scale = Vector2(18, 1)
-
-[connection signal="body_entered" from="AreaStartingCamera" to="AreaStartingCamera" method="OnBodyEntered"]

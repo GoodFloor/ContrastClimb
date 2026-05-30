@@ -1,0 +1,59 @@
+[gd_resource type="TileSet" format=3 uid="uid://cla2cpiwlyx7j"]
+
+[ext_resource type="PackedScene" uid="uid://bhawmcw4bdflq" path="res://environment/platforms/always_solid/center.tscn" id="1_uofvm"]
+[ext_resource type="PackedScene" uid="uid://dvml7sjyxpjyw" path="res://environment/platforms/one_way/dark_center.tscn" id="2_ee1jc"]
+[ext_resource type="PackedScene" uid="uid://brewdsvkjhbtm" path="res://environment/platforms/one_way/light_center.tscn" id="3_h31bf"]
+[ext_resource type="PackedScene" uid="uid://bi401mvo5qm48" path="res://environment/platforms/single_use/dark_center.tscn" id="4_bjs65"]
+[ext_resource type="PackedScene" uid="uid://k7wqo5pvpdci" path="res://environment/platforms/single_use/light_center.tscn" id="5_cmycd"]
+[ext_resource type="PackedScene" uid="uid://d3b287b1rt66l" path="res://environment/platforms/spikes/dark_center.tscn" id="6_jprtg"]
+[ext_resource type="PackedScene" uid="uid://bbcfjcbqq4rie" path="res://environment/platforms/spikes/light_center.tscn" id="7_lt7ap"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_uofvm"]
+tile_data = PackedInt32Array(0, 1, 131072, 1, 1, 131072, 2, 1, 131072, 3, 1, 131072)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ee1jc"]
+tile_data = PackedInt32Array(0, 1, 65536, 1, 1, 65536, 2, 1, 65536, 3, 1, 65536)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_h31bf"]
+tile_data = PackedInt32Array(0, 2, 131072, 1, 2, 131072, 2, 2, 131072, 3, 2, 131072)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_bjs65"]
+tile_data = PackedInt32Array(0, 2, 65536, 1, 2, 65536, 2, 2, 65536, 3, 2, 65536)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cmycd"]
+tile_data = PackedInt32Array(0, 3, 131072, 1, 3, 131072, 2, 3, 131072, 3, 3, 131072)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jprtg"]
+tile_data = PackedInt32Array(0, 3, 65536, 1, 3, 65536, 2, 3, 65536, 3, 3, 65536)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_euv33"]
+resource_name = "SolidPlatforms"
+scenes/1/scene = ExtResource("1_uofvm")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1scls"]
+resource_name = "OneWayPlatforms"
+scenes/1/scene = ExtResource("2_ee1jc")
+scenes/2/scene = ExtResource("3_h31bf")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dxpy2"]
+resource_name = "SingleUsePlatforms"
+scenes/1/scene = ExtResource("4_bjs65")
+scenes/2/scene = ExtResource("5_cmycd")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3bh05"]
+resource_name = "SpikePlatforms"
+scenes/1/scene = ExtResource("6_jprtg")
+scenes/2/scene = ExtResource("7_lt7ap")
+
+[resource]
+tile_size = Vector2i(36, 36)
+sources/0 = SubResource("TileSetScenesCollectionSource_euv33")
+sources/1 = SubResource("TileSetScenesCollectionSource_1scls")
+sources/2 = SubResource("TileSetScenesCollectionSource_dxpy2")
+sources/3 = SubResource("TileSetScenesCollectionSource_3bh05")
+pattern_0 = SubResource("TileMapPattern_uofvm")
+pattern_1 = SubResource("TileMapPattern_ee1jc")
+pattern_2 = SubResource("TileMapPattern_h31bf")
+pattern_3 = SubResource("TileMapPattern_bjs65")
+pattern_4 = SubResource("TileMapPattern_cmycd")
+pattern_5 = SubResource("TileMapPattern_jprtg")

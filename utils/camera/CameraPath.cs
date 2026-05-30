@@ -7,8 +7,8 @@ public partial class CameraPath : Path2D
 {
     private PathFollow2D _pathFollow;
     
-    private const float DefaultSpeed = 0.1f;
-    private const float SpeedModifier = 0.1f;
+    private const float DefaultSpeed = 120f;
+    private const float SpeedModifier = 10f;
     private float _speed = DefaultSpeed;
     public override void _Ready()
     {
@@ -22,7 +22,7 @@ public partial class CameraPath : Path2D
         base._PhysicsProcess(delta);
         float df = (float)delta;
         
-        _pathFollow.ProgressRatio += df * _speed;
+        _pathFollow.Progress += df * _speed;
     }
 
     public void StartCamera()

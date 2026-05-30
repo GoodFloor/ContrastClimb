@@ -1,16 +1,16 @@
-[gd_scene format=3 uid="uid://dvml7sjyxpjyw"]
+[gd_scene format=3 uid="uid://bhawmcw4bdflq"]
 
-[ext_resource type="Script" uid="uid://bfon5vf5i22i4" path="res://environment/platforms/one_way/OneWayPlatform.cs" id="1_4orma"]
-[ext_resource type="Script" uid="uid://cjhdqp7bq51yl" path="res://environment/platforms/one_way/PlatformSprite.cs" id="2_vsrp4"]
+[ext_resource type="Script" uid="uid://dstdwpdxy0y4b" path="res://environment/platforms/always_solid/SolidPlatform.cs" id="1_mis3q"]
+[ext_resource type="Script" uid="uid://0vfwkoe4r7ue" path="res://environment/platforms/always_solid/PlatformSprite.cs" id="2_25j8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud2i"]
 size = Vector2(36, 36)
 
-[node name="OneWayDarkCenter" type="StaticBody2D" unique_id=1186250729]
-script = ExtResource("1_4orma")
+[node name="SolidCenter" type="StaticBody2D" unique_id=1186250729]
+script = ExtResource("1_mis3q")
 
 [node name="PlatformSprite" type="Node2D" parent="." unique_id=1257827499]
-script = ExtResource("2_vsrp4")
+script = ExtResource("2_25j8t")
 
 [node name="ColorRect" type="ColorRect" parent="PlatformSprite" unique_id=22576023]
 offset_left = -18.0

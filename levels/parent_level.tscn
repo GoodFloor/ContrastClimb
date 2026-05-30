@@ -1,9 +1,8 @@
-[gd_scene format=3 uid="uid://bmtyf8xi4mblq"]
+[gd_scene format=4 uid="uid://bmtyf8xi4mblq"]
 
 [ext_resource type="Script" uid="uid://byrdti6y83dch" path="res://levels/ParentLevel.cs" id="1_icvtc"]
 [ext_resource type="PackedScene" uid="uid://bafd1m1yjdaij" path="res://characters/player/player.tscn" id="2_h0kjv"]
-[ext_resource type="PackedScene" uid="uid://ss8xfc2eooap" path="res://environment/platforms/static_platform.tscn" id="3_1givh"]
-[ext_resource type="PackedScene" uid="uid://jjglqf8dit6x" path="res://environment/platforms/one_way_platform.tscn" id="4_n3k1t"]
+[ext_resource type="TileSet" uid="uid://cla2cpiwlyx7j" path="res://environment/environment_tile_set.tres" id="3_50aq0"]
 [ext_resource type="PackedScene" uid="uid://dttutbgr1r0lg" path="res://utils/camera/camera_path.tscn" id="5_iiw0q"]
 [ext_resource type="PackedScene" uid="uid://dr8mhix453emc" path="res://environment/win_area.tscn" id="7_ysplb"]
 
@@ -24,29 +23,10 @@ ScoreTier3 = 1
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_h0kjv")]
 position = Vector2(180, 800)
 
-[node name="Platforms" type="Node2D" parent="." unique_id=1977420596]
-
-[node name="Static" type="Node2D" parent="Platforms" unique_id=1234300566]
-
-[node name="Floor" parent="Platforms/Static" unique_id=2104119367 instance=ExtResource("3_1givh")]
+[node name="Map" type="TileMapLayer" parent="." unique_id=1433248330]
 position = Vector2(0, 800)
-scale = Vector2(9, 1)
-
-[node name="LeftWall" parent="Platforms/Static" unique_id=535848991 instance=ExtResource("3_1givh")]
-position = Vector2(0, 800)
-rotation = 3.1415927
-scale = Vector2(1, 50)
-
-[node name="RightWall" parent="Platforms/Static" unique_id=1316489267 instance=ExtResource("3_1givh")]
-position = Vector2(400, 800)
-rotation = 3.1415927
-scale = Vector2(1, 50)
-
-[node name="Basic" type="Node2D" parent="Platforms" unique_id=2073250152]
-
-[node name="OneWayPlatform" parent="Platforms/Basic" unique_id=1434721437 instance=ExtResource("4_n3k1t")]
-position = Vector2(50, 660)
-IsWhite = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAFAAAAAAAAAAAAAQAGAAAAAAAAAAAAAQAHAAAAAAAAAAAAAQAIAAAAAAAAAAAAAQAJAAAAAAAAAAAAAQD//wAAAAAAAAAAAQAKAAAAAAAAAAAAAQA=")
+tile_set = ExtResource("3_50aq0")
 
 [node name="CameraPath" parent="." unique_id=1033517817 instance=ExtResource("5_iiw0q")]
 curve = SubResource("Curve2D_jum3j")
