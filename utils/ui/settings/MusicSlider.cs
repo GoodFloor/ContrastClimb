@@ -18,17 +18,18 @@ public partial class MusicSlider : HSlider
     {
         Value = 100.0 - Global.Config.Music;
         
+        SetVolume(Global.Config.Music);
+    }
+
+    private void SetVolume(float value)
+    {
         // If _musicPlayer wasn't assigned yet - get its reference
         _musicPlayer ??= Global.GameManager.GetNode<AudioStreamPlayer2D>("MusicPlayer");
 
-        if (Global.Config.Music < 100f)
-        {
-            _musicPlayer.VolumeDb = MaxVolume * Global.Config.Music / -100f;
-        }
+        if (value < 100f)
+            _musicPlayer.VolumeDb = MaxVolume * value / -100f;
         else
-        {
             _musicPlayer.VolumeDb = -80f;
-        }
     }
 
     public override void _ValueChanged(double newValue)
@@ -37,17 +38,8 @@ public partial class MusicSlider : HSlider
         
         var convertedValue = 100f - (float)newValue;
 
-        // If _musicPlayer wasn't assigned yet - get its reference
-        _musicPlayer ??= Global.GameManager.GetNode<AudioStreamPlayer2D>("MusicPlayer");
-
-        if (convertedValue < 100f)
-        {
-            _musicPlayer.VolumeDb = MaxVolume * convertedValue / -100f;
-        }
-        else
-        {
-            _musicPlayer.VolumeDb = -80f;
-        }
+        SetVolume(convertedValue);
+        
         Global.Config.Music = convertedValue;
     }
 }
