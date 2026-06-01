@@ -64,7 +64,11 @@ public partial class Player : CharacterBody2D
         ReloadMovementConfig();
         
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
-        Global.GameManager.Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.OnColorChanged));
+        Global.GameManager.Connect(
+            GameManager.SignalName.ColorChanged, 
+            new Callable(this, MethodName.OnColorChanged)
+        );
+        
     }
 
     /// <summary>

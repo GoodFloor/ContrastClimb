@@ -35,7 +35,10 @@ public partial class ParentPlatform : StaticBody2D
             CollisionLayer = (uint)ECollisionMask.BlackDownwards;
         }
         
-        Global.GameManager.Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.SwitchColor));
+        Global.GameManager.Connect(
+            GameManager.SignalName.ColorChanged, 
+            new Callable(this, MethodName.SwitchColor)
+        );
     }
 
     protected virtual void SwitchColor()

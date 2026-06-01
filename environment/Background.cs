@@ -11,7 +11,10 @@ public partial class Background : ColorRect
     {
         base._Ready();
         
-        Global.GameManager.Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.OnColorChanged));
+        Global.GameManager.Connect(
+            GameManager.SignalName.ColorChanged, 
+            new Callable(this, MethodName.OnColorChanged)
+        );
     }
 
     private void OnColorChanged()
