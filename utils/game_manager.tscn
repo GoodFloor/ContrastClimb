@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://1snbhc2eorxg" path="res://utils/ui/settings/SteeringOptionButton.cs" id="11_jccf6"]
 [ext_resource type="Script" uid="uid://ikavdojpwvyi" path="res://utils/ui/settings/MusicSlider.cs" id="11_lgvtp"]
 [ext_resource type="AudioStream" uid="uid://dskt2cxasxlxy" path="res://music/placeholder.mp3" id="13_adq2u"]
+[ext_resource type="Script" uid="uid://bp5g57fy1uem1" path="res://utils/ui/EnergyLeftOverlay.cs" id="14_hb3xv"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -23,11 +24,37 @@ script = ExtResource("1_58e6k")
 process_mode = 1
 script = ExtResource("2_g2d5c")
 
+[node name="EnergyLeftOverlay" type="CanvasLayer" parent="LevelRoot" unique_id=1637295906]
+script = ExtResource("14_hb3xv")
+
+[node name="ColorRect" type="ColorRect" parent="LevelRoot/EnergyLeftOverlay" unique_id=853869273]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -242.0
+offset_bottom = -760.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.44313726, 0.44313726, 0.44313726, 0.5019608)
+
+[node name="Display" type="HBoxContainer" parent="LevelRoot/EnergyLeftOverlay" unique_id=202009948]
+offset_right = 111.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=846554299]
+layout_mode = 2
+text = "Energy left:"
+
+[node name="EnergyLeftLabel" type="Label" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=481445187]
+layout_mode = 2
+text = "00"
+
 [node name="CutsceneRoot" type="CanvasLayer" parent="." unique_id=186782642]
 process_mode = 1
 
 [node name="UIRoot" type="CanvasLayer" parent="." unique_id=278079975]
 process_mode = 2
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UIRoot" unique_id=53590242]
 anchors_preset = 15
@@ -228,6 +255,7 @@ text = "Back"
 stream = ExtResource("13_adq2u")
 volume_db = -16.0
 autoplay = true
+max_distance = 20000.0
 
 [connection signal="pressed" from="UIRoot/MainMenu/SettingsButton" to="." method="OpenSettings"]
 [connection signal="pressed" from="UIRoot/LevelSelection/BackButton" to="." method="PauseGame"]

@@ -16,6 +16,7 @@ point_count = 2
 
 [node name="Level_" type="Node2D" unique_id=469552005]
 script = ExtResource("1_5ot28")
+StartingEnergy = 20
 ScoreTier1 = 12
 ScoreTier2 = 10
 ScoreTier3 = 8

@@ -6,6 +6,7 @@ namespace ContrastClimb.levels;
 
 public partial class ParentLevel : Node2D
 {
+    [Export] public int StartingEnergy;
     [Export] public int ScoreTier1;
     [Export] public int ScoreTier2;
     [Export] public int ScoreTier3;
@@ -17,7 +18,7 @@ public partial class ParentLevel : Node2D
     public override void _Ready()
     {
         base._Ready();
-        _cameraPath = GetNode<utils.CameraPath>("CameraPath");
+        _cameraPath = GetNode<CameraPath>("CameraPath");
         _cameraStartArea = GetNode<Area2D>("AreaStartingCamera");
 
         _cameraStartArea.BodyEntered += CameraStartArea;

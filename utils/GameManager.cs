@@ -1,6 +1,7 @@
 using System;
 using ContrastClimb.characters.player;
 using ContrastClimb.levels;
+using ContrastClimb.utils.ui;
 using ContrastClimb.utils.ui.level_selection;
 using Godot;
 
@@ -27,14 +28,13 @@ public partial class GameManager : Node
     private Control _winScreen;
     private Control _failScreen;
     private Sprite2D _winScreenScore;
+    private EnergyLeftOverlay _energyLeftOverlay;
     
     private AudioStreamPlayer2D _musicPlayer;
     
     private int _currentLevelId;
 
     private int _colorChangesUsed;
-
-    private bool _cutsceneScheduled;
     
     
     public override void _Ready()
@@ -52,6 +52,7 @@ public partial class GameManager : Node
         _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         _musicPlayer =  GetNode<AudioStreamPlayer2D>("MusicPlayer");
+        _energyLeftOverlay = _levelRoot.GetNode<EnergyLeftOverlay>("EnergyLeftOverlay");
         
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
@@ -92,16 +93,14 @@ public partial class GameManager : Node
         _settingsScreen.Visible = false;
         _winScreen.Visible = false;
         _failScreen.Visible = false;
+        _energyLeftOverlay.Visible = false;
     }
 
     public void ResumeGame()
     {
         _uiRoot.Visible = false;
+        _energyLeftOverlay.Visible = true;
         GetTree().Paused = false;
-        if (_cutsceneScheduled)
-        {
-            
-        }
     }
 
     public void PlayLevel(int levelId)
@@ -176,17 +175,12 @@ public partial class GameManager : Node
 
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
         Player = _currentInstanceLevel.GetNode<Player>("Player");
+        _energyLeftOverlay.Value = _currentInstanceLevel.StartingEnergy;
 
         if (_currentInstanceLevel.Cutscene == null)
-        {
             _levelRoot.AddChild(_currentInstanceLevel);
-        }
         else
-        {
-            _cutsceneScheduled = true;
             LoadCutscene(_currentInstanceLevel.Cutscene);
-        }
-        
     }
 
     private void LoadNewLevel(string levelName)
@@ -207,7 +201,6 @@ public partial class GameManager : Node
     
     public void EndCutscene()
     {
-        _cutsceneScheduled = false;
         _cutsceneInstance?.QueueFree();
         _levelRoot.AddChild(_currentInstanceLevel);
     }

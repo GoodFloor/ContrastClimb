@@ -9,7 +9,7 @@ public partial class Progress : GodotObject
     private const string ProgressPath = "user://progress.cfg";
     private const string Password = "f31oijzvc";
     private const int CurrentVersion = 1;
-    private ConfigFile _progressFile = new ConfigFile();
+    private ConfigFile _progressFile = new();
 
     public int LatestLevelId
     {
@@ -35,6 +35,8 @@ public partial class Progress : GodotObject
     {
         _progressFile.SetValue("info", "version", CurrentVersion);
         _progressFile.SetValue("info", "latestLevelId", 0);
+        
+        _progressFile.SetValue("collectibles", "energy", 0);
 
         _progressFile.SetValue("level_0", "state", "unlocked");
         _progressFile.SetValue("level_0", "score", 0);

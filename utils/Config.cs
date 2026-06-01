@@ -5,8 +5,8 @@ namespace ContrastClimb.utils;
 
 public partial class Config : GodotObject
 {
-    private const string ConfigPath = "res://config.cfg";
-    private ConfigFile _configFile = new ConfigFile();
+    private const string ConfigPath = "user://config.cfg";
+    private ConfigFile _configFile = new();
     public EMovementType Steering
     {
         get => (EMovementType)(int)_configFile.GetValue("gameplay", "steering");

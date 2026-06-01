@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://k7wqo5pvpdci" path="res://environment/platforms/single_use/light_center.tscn" id="5_cmycd"]
 [ext_resource type="PackedScene" uid="uid://d3b287b1rt66l" path="res://environment/platforms/spikes/dark_center.tscn" id="6_jprtg"]
 [ext_resource type="PackedScene" uid="uid://bbcfjcbqq4rie" path="res://environment/platforms/spikes/light_center.tscn" id="7_lt7ap"]
+[ext_resource type="PackedScene" uid="uid://c5whuut4cpecj" path="res://environment/collectibles/energy_orb.tscn" id="8_ee1jc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uofvm"]
 tile_data = PackedInt32Array(0, 1, 131072, 1, 1, 131072, 2, 1, 131072, 3, 1, 131072)
@@ -45,12 +46,17 @@ resource_name = "SpikePlatforms"
 scenes/1/scene = ExtResource("6_jprtg")
 scenes/2/scene = ExtResource("7_lt7ap")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_h31bf"]
+resource_name = "Collectibles"
+scenes/1/scene = ExtResource("8_ee1jc")
+
 [resource]
 tile_size = Vector2i(36, 36)
 sources/0 = SubResource("TileSetScenesCollectionSource_euv33")
 sources/1 = SubResource("TileSetScenesCollectionSource_1scls")
 sources/2 = SubResource("TileSetScenesCollectionSource_dxpy2")
 sources/3 = SubResource("TileSetScenesCollectionSource_3bh05")
+sources/4 = SubResource("TileSetScenesCollectionSource_h31bf")
 pattern_0 = SubResource("TileMapPattern_uofvm")
 pattern_1 = SubResource("TileMapPattern_ee1jc")
 pattern_2 = SubResource("TileMapPattern_h31bf")
