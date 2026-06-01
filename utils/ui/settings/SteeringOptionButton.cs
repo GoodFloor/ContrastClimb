@@ -9,20 +9,12 @@ public partial class SteeringOptionButton : OptionButton
 
     public override void _Ready()
     {
-        WaitAndLoadConfig();
+        ((GameManager)GetTree().CurrentScene).ConfigLoaded += OnConfigLoaded;
     }
 
-    private async void WaitAndLoadConfig()
+    private void OnConfigLoaded()
     {
-        try
-        {
-            await ToSignal(GetTree().CreateTimer(1f, true), SceneTreeTimer.SignalName.Timeout);
-            Selected = (int)Global.Config.Steering;
-        }
-        catch (Exception e)
-        {
-            GD.PrintErr(e);
-        }
+        Selected = (int)Global.Config.Steering;
     }
     
     private void OnItemSelected(int index)
