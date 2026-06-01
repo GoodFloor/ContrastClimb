@@ -136,7 +136,7 @@ public partial class GameManager : Node
             Global.Progress.UnlockLevel(_currentLevelId);
             _levelSelection.UnlockLevel(_currentLevelId);
             Global.Progress.LatestLevelId = _currentLevelId;
-            LoadNewLevel($"level_{_currentLevelId}");
+            _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/level_{_currentLevelId}.tscn");
         }
         else
         {

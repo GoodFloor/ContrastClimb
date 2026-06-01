@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://deejsk3obhr03" path="res://utils/ui/level_selection/LevelSelection.cs" id="8_m5by7"]
 [ext_resource type="Script" uid="uid://cu6sp81ikdvyo" path="res://utils/ui/main_menu/ResetProgressButton.cs" id="11_8i5jn"]
 [ext_resource type="Script" uid="uid://1snbhc2eorxg" path="res://utils/ui/settings/SteeringOptionButton.cs" id="11_jccf6"]
+[ext_resource type="AudioStream" uid="uid://dskt2cxasxlxy" path="res://music/placeholder.mp3" id="13_adq2u"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -208,6 +209,11 @@ script = ExtResource("11_8i5jn")
 [node name="BackButton" type="Button" parent="UIRoot/SettingsScreen" unique_id=917318495]
 layout_mode = 2
 text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1563401921]
+stream = ExtResource("13_adq2u")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="pressed" from="UIRoot/MainMenu/SettingsButton" to="." method="OpenSettings"]
 [connection signal="pressed" from="UIRoot/LevelSelection/BackButton" to="." method="PauseGame"]
