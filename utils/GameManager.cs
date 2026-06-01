@@ -1,3 +1,4 @@
+using System;
 using ContrastClimb.characters.player;
 using ContrastClimb.levels;
 using ContrastClimb.utils.ui.level_selection;
@@ -7,9 +8,13 @@ namespace ContrastClimb.utils;
 
 public partial class GameManager : Node
 {
+    [Signal]
+    public delegate void ConfigLoadedEventHandler();
+    
     private Node2D _levelRoot;
     private PackedScene _currentLoadedLevel;
     private ParentLevel _currentInstanceLevel;
+    public Player Player;
 
     private Node _cutsceneRoot;
     private PackedScene _cutsceneTemplate;
@@ -22,7 +27,8 @@ public partial class GameManager : Node
     private Control _winScreen;
     private Control _failScreen;
     private Sprite2D _winScreenScore;
-    public Player Player;
+    
+    private AudioStreamPlayer2D _musicPlayer;
     
     private int _currentLevelId;
 
@@ -37,6 +43,7 @@ public partial class GameManager : Node
         
         Global.Config = new Config();
         Global.Config.LoadConfig();
+        EmitSignal(SignalName.ConfigLoaded);
         
         Global.Progress = new Progress();
         Global.Progress.LoadProgress();
@@ -44,6 +51,8 @@ public partial class GameManager : Node
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
+        _musicPlayer =  GetNode<AudioStreamPlayer2D>("MusicPlayer");
+        
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
         _settingsScreen = _uiRoot.GetNode<Control>("SettingsScreen");

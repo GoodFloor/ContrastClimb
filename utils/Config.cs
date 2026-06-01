@@ -16,6 +16,17 @@ public partial class Config : GodotObject
             _configFile.Save(ConfigPath);
         } 
     }
+
+    public float Music
+    {
+        get => (float)_configFile.GetValue("preferences", "musicVolume");
+        set
+        {
+            _configFile.SetValue("preferences", "musicVolume", value);
+            _configFile.Save(ConfigPath);
+        }
+        
+    }
     
     /// <summary>
     /// Loads config from file and makes sure that all the expected options are present. 
@@ -43,6 +54,11 @@ public partial class Config : GodotObject
                 _configFile.SetValue("gameplay", "steering", (int)EMovementType.Drag);
             }
                 
+        }
+
+        if (!_configFile.HasSectionKey("preferences", "musicVolume"))
+        {
+            _configFile.SetValue("preferences", "musicVolume", 50f);
         }
         
         

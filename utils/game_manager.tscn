@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://deejsk3obhr03" path="res://utils/ui/level_selection/LevelSelection.cs" id="8_m5by7"]
 [ext_resource type="Script" uid="uid://cu6sp81ikdvyo" path="res://utils/ui/main_menu/ResetProgressButton.cs" id="11_8i5jn"]
 [ext_resource type="Script" uid="uid://1snbhc2eorxg" path="res://utils/ui/settings/SteeringOptionButton.cs" id="11_jccf6"]
+[ext_resource type="Script" uid="uid://ikavdojpwvyi" path="res://utils/ui/settings/MusicSlider.cs" id="11_lgvtp"]
 [ext_resource type="AudioStream" uid="uid://dskt2cxasxlxy" path="res://music/placeholder.mp3" id="13_adq2u"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
@@ -183,6 +184,19 @@ layout_mode = 2
 text = "RESET CONFIG"
 script = ExtResource("5_xvya0")
 
+[node name="MusicRow" type="HBoxContainer" parent="UIRoot/SettingsScreen" unique_id=324290810]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="UIRoot/SettingsScreen/MusicRow" unique_id=817424501]
+layout_mode = 2
+text = "Music:"
+
+[node name="MusicSlider" type="HSlider" parent="UIRoot/SettingsScreen/MusicRow" unique_id=1880130809]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+script = ExtResource("11_lgvtp")
+
 [node name="SteeringRow" type="HBoxContainer" parent="UIRoot/SettingsScreen" unique_id=958592334]
 layout_mode = 2
 
@@ -210,7 +224,7 @@ script = ExtResource("11_8i5jn")
 layout_mode = 2
 text = "Back"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1563401921]
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1563401921]
 stream = ExtResource("13_adq2u")
 volume_db = -16.0
 autoplay = true
