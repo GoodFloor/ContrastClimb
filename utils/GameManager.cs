@@ -1,3 +1,4 @@
+using ContrastClimb.characters.player;
 using ContrastClimb.levels;
 using ContrastClimb.utils.ui.level_selection;
 using Godot;
@@ -17,9 +18,11 @@ public partial class GameManager : Node
     private CanvasLayer _uiRoot;
     private Control _mainMenu;
     private LevelSelection _levelSelection;
+    private Control _settingsScreen;
     private Control _winScreen;
     private Control _failScreen;
     private Sprite2D _winScreenScore;
+    public Player Player;
     
     private int _currentLevelId;
 
@@ -43,6 +46,7 @@ public partial class GameManager : Node
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
+        _settingsScreen = _uiRoot.GetNode<Control>("SettingsScreen");
         _winScreen = _uiRoot.GetNode<Control>("WinScreen");
         _failScreen = _uiRoot.GetNode<Control>("FailScreen");
         _winScreenScore = _winScreen.GetNode<Sprite2D>("Score");
@@ -76,6 +80,7 @@ public partial class GameManager : Node
         _uiRoot.Visible = true;
         _mainMenu.Visible = true;
         _levelSelection.Visible = false;
+        _settingsScreen.Visible = false;
         _winScreen.Visible = false;
         _failScreen.Visible = false;
     }
@@ -161,6 +166,7 @@ public partial class GameManager : Node
         _colorChangesUsed = 0;
 
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
+        Player = _currentInstanceLevel.GetNode<Player>("Player");
 
         if (_currentInstanceLevel.Cutscene == null)
         {
@@ -195,5 +201,22 @@ public partial class GameManager : Node
         _cutsceneScheduled = false;
         _cutsceneInstance?.QueueFree();
         _levelRoot.AddChild(_currentInstanceLevel);
+    }
+    
+    private void OpenSettings()
+    {
+        PauseGame();
+        
+        _mainMenu.Visible = false;
+        _settingsScreen.Visible = true;
+    }
+
+    public void RegenerateLevelsList()
+    {
+        _levelSelection.ClearLevelsList();
+        _levelSelection.GenerateLevelsList();
+        
+        _currentLevelId = Global.Progress.LatestLevelId;
+        LoadNewLevel($"level_{_currentLevelId}");
     }
 }

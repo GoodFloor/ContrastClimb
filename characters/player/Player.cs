@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
     /// <summary>
     /// Checks the current config and loads the defined movement type. Should be called after editing the current config for the changes to take place. 
     /// </summary>
-    private void ReloadMovementConfig()
+    public void ReloadMovementConfig()
     {
         _movementHandler = Global.Config.Steering switch
         {

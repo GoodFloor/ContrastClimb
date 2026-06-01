@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dv6e2ubr4lvtr" path="res://utils/ui/stars_0.png" id="7_2ik7w"]
 [ext_resource type="PackedScene" uid="uid://bxirwj51vyjh7" path="res://utils/ui/level_selection/level_selector_button.tscn" id="7_dpd3l"]
 [ext_resource type="Script" uid="uid://deejsk3obhr03" path="res://utils/ui/level_selection/LevelSelection.cs" id="8_m5by7"]
+[ext_resource type="Script" uid="uid://cu6sp81ikdvyo" path="res://utils/ui/main_menu/ResetProgressButton.cs" id="11_8i5jn"]
+[ext_resource type="Script" uid="uid://1snbhc2eorxg" path="res://utils/ui/settings/SteeringOptionButton.cs" id="11_jccf6"]
 
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
@@ -57,15 +59,14 @@ layout_mode = 2
 text = "Levels"
 script = ExtResource("4_1inmq")
 
+[node name="SettingsButton" type="Button" parent="UIRoot/MainMenu" unique_id=694467572]
+layout_mode = 2
+text = "Settings"
+
 [node name="ExitButton" type="Button" parent="UIRoot/MainMenu" unique_id=1460069890]
 layout_mode = 2
 text = "Exit"
 script = ExtResource("2_58e6k")
-
-[node name="ResetConfig" type="Button" parent="UIRoot/MainMenu" unique_id=1667231188]
-layout_mode = 2
-text = "RESET CONFIG"
-script = ExtResource("5_xvya0")
 
 [node name="WinScreen" type="VBoxContainer" parent="UIRoot" unique_id=342444967]
 visible = false
@@ -147,3 +148,68 @@ visible = false
 layout_mode = 2
 text = "Level -1"
 LevelId = -1
+
+[node name="BackButton" type="Button" parent="UIRoot/LevelSelection" unique_id=1330152602]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -123.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
+
+[node name="SettingsScreen" type="VBoxContainer" parent="UIRoot" unique_id=175446004]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -20.0
+offset_right = 59.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="ResetConfig" type="Button" parent="UIRoot/SettingsScreen" unique_id=1667231188]
+visible = false
+layout_mode = 2
+text = "RESET CONFIG"
+script = ExtResource("5_xvya0")
+
+[node name="SteeringRow" type="HBoxContainer" parent="UIRoot/SettingsScreen" unique_id=958592334]
+layout_mode = 2
+
+[node name="SteeringLabel" type="Label" parent="UIRoot/SettingsScreen/SteeringRow" unique_id=1301059938]
+layout_mode = 2
+text = "Steering:"
+
+[node name="SteeringOptionButton" type="OptionButton" parent="UIRoot/SettingsScreen/SteeringRow" unique_id=357054142]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Tilt"
+popup/item_0/id = 0
+popup/item_1/text = "Drag"
+popup/item_1/id = 1
+popup/item_2/text = "Keyboard"
+popup/item_2/id = 2
+script = ExtResource("11_jccf6")
+
+[node name="ResetProgressButton" type="Button" parent="UIRoot/SettingsScreen" unique_id=1882267579]
+layout_mode = 2
+text = "Reset progress"
+script = ExtResource("11_8i5jn")
+
+[node name="BackButton" type="Button" parent="UIRoot/SettingsScreen" unique_id=917318495]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="UIRoot/MainMenu/SettingsButton" to="." method="OpenSettings"]
+[connection signal="pressed" from="UIRoot/LevelSelection/BackButton" to="." method="PauseGame"]
+[connection signal="item_selected" from="UIRoot/SettingsScreen/SteeringRow/SteeringOptionButton" to="UIRoot/SettingsScreen/SteeringRow/SteeringOptionButton" method="OnItemSelected"]
+[connection signal="pressed" from="UIRoot/SettingsScreen/BackButton" to="." method="PauseGame"]

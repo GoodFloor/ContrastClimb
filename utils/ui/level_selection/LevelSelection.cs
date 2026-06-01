@@ -44,4 +44,13 @@ public partial class LevelSelection : Control
     {
         _levelSelectorButtons[levelId].LevelScore = newScore;
     }
+    
+    public void ClearLevelsList()
+    {
+        foreach (var level in _levelSelectorButtons)
+        {
+            _levelGrid.RemoveChild(level);
+        }
+        _levelSelectorButtons.Clear();
+    }
 }
