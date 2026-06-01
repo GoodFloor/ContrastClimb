@@ -1,3 +1,4 @@
+using ContrastClimb.utils;
 using ContrastClimb.utils.enums;
 using Godot;
 
@@ -34,15 +35,7 @@ public partial class ParentPlatform : StaticBody2D
             CollisionLayer = (uint)ECollisionMask.BlackDownwards;
         }
         
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
-        if (Input.IsActionJustPressed("switch_color"))
-        {
-            SwitchColor();
-        }
+        Global.GameManager.Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.SwitchColor));
     }
 
     protected virtual void SwitchColor()

@@ -13,21 +13,17 @@ public partial class Player : CharacterBody2D
     
     private Movement _movementHandler;
 
-    public override void _Input(InputEvent @event)
+    private void OnColorChanged()
     {
-        base._Input(@event);
-        if (@event.IsActionPressed("switch_color"))
-        {
-            _currentColor ^= ColorSwitchMask;
+        _currentColor ^= ColorSwitchMask;
              
-            if (_currentColor == (uint)ECollisionMask.BlackAndSolid)
-            {
-                Modulate = GColors.Dark;
-            }
-            else
-            {
-                Modulate = GColors.Light;
-            }
+        if (_currentColor == (uint)ECollisionMask.BlackAndSolid)
+        {
+            Modulate = GColors.Dark;
+        }
+        else
+        {
+            Modulate = GColors.Light;
         }
     }
 
@@ -68,6 +64,7 @@ public partial class Player : CharacterBody2D
         ReloadMovementConfig();
         
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
+        Global.GameManager.Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.OnColorChanged));
     }
 
     /// <summary>

@@ -23,16 +23,17 @@ public partial class EnergyLeftOverlay : CanvasLayer
         base._Ready();
 
         _counter = GetNode<Label>("Display/EnergyLeftLabel");
+        ((GameManager)GetTree().CurrentScene).Connect(GameManager.SignalName.ColorChanged, new Callable(this, MethodName.OnColorChanged));
     }
 
-    public override void _Input(InputEvent @event)
+    private void OnColorChanged()
     {
-        base._Input(@event);
-        
-        if (@event.IsActionPressed("switch_color") && _value > 0)
-        {
-            _value--;
-            _counter.Text = _value.ToString();
-        }
+        _value--;
+        _counter.Text = _value.ToString();
+    }
+
+    public void AddEnergy(int value = 1)
+    {
+        Value += value;
     }
 }

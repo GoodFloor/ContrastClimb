@@ -10,6 +10,8 @@ namespace ContrastClimb.utils;
 public partial class GameManager : Node
 {
     [Signal]
+    public delegate void ColorChangedEventHandler();
+    [Signal]
     public delegate void ConfigLoadedEventHandler();
     
     private Node2D _levelRoot;
@@ -28,14 +30,11 @@ public partial class GameManager : Node
     private Control _winScreen;
     private Control _failScreen;
     private Sprite2D _winScreenScore;
-    private EnergyLeftOverlay _energyLeftOverlay;
+    public EnergyLeftOverlay EnergyLeftOverlay;
     
     private AudioStreamPlayer2D _musicPlayer;
     
     private int _currentLevelId;
-
-    private int _colorChangesUsed;
-    
     
     public override void _Ready()
     {
@@ -52,7 +51,7 @@ public partial class GameManager : Node
         _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
         _musicPlayer =  GetNode<AudioStreamPlayer2D>("MusicPlayer");
-        _energyLeftOverlay = _levelRoot.GetNode<EnergyLeftOverlay>("EnergyLeftOverlay");
+        EnergyLeftOverlay = _levelRoot.GetNode<EnergyLeftOverlay>("EnergyLeftOverlay");
         
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
         _levelSelection = _uiRoot.GetNode<LevelSelection>("LevelSelection");
@@ -80,8 +79,8 @@ public partial class GameManager : Node
     {
         base._Input(@event);
 
-        if (@event.IsActionPressed("switch_color"))
-            _colorChangesUsed++;
+        if (@event.IsActionPressed("switch_color") && EnergyLeftOverlay.Value > 0)
+            EmitSignalColorChanged();
     }
 
     public void PauseGame()
@@ -93,13 +92,13 @@ public partial class GameManager : Node
         _settingsScreen.Visible = false;
         _winScreen.Visible = false;
         _failScreen.Visible = false;
-        _energyLeftOverlay.Visible = false;
+        EnergyLeftOverlay.Visible = false;
     }
 
     public void ResumeGame()
     {
         _uiRoot.Visible = false;
-        _energyLeftOverlay.Visible = true;
+        EnergyLeftOverlay.Visible = true;
         GetTree().Paused = false;
     }
 
@@ -120,15 +119,11 @@ public partial class GameManager : Node
         {
             _winScreen.Visible = true;
 
-            int score;
-            if (_colorChangesUsed < _currentInstanceLevel.ScoreTier3)
+            var score = 1;
+            if (EnergyLeftOverlay.Value >= _currentInstanceLevel.EnergyLeftPerfect)
                 score = 3;
-            else if (_colorChangesUsed < _currentInstanceLevel.ScoreTier2)
+            else if (EnergyLeftOverlay.Value >= _currentInstanceLevel.EnergyLeftOk)
                 score = 2;
-            else if (_colorChangesUsed < _currentInstanceLevel.ScoreTier1)
-                score = 1;
-            else
-                score = 0;
             
             _winScreenScore.Texture = Global.ScoreTexture[score];
 
@@ -169,13 +164,10 @@ public partial class GameManager : Node
     {
         // Remove previously loaded level before loading a new one
         _currentInstanceLevel?.QueueFree();
-        
-        // Reset the score
-        _colorChangesUsed = 0;
 
         _currentInstanceLevel = _currentLoadedLevel.Instantiate<ParentLevel>();
         Player = _currentInstanceLevel.GetNode<Player>("Player");
-        _energyLeftOverlay.Value = _currentInstanceLevel.StartingEnergy;
+        EnergyLeftOverlay.Value = _currentInstanceLevel.StartingEnergy;
 
         if (_currentInstanceLevel.Cutscene == null)
             _levelRoot.AddChild(_currentInstanceLevel);
@@ -202,6 +194,7 @@ public partial class GameManager : Node
     public void EndCutscene()
     {
         _cutsceneInstance?.QueueFree();
+        _cutsceneInstance = null;
         _levelRoot.AddChild(_currentInstanceLevel);
     }
     

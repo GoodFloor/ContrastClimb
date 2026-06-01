@@ -1,4 +1,5 @@
 using ContrastClimb.characters.player;
+using ContrastClimb.utils;
 using Godot;
 
 namespace ContrastClimb.environment.collectibles;
@@ -10,7 +11,7 @@ public partial class EnergyOrb : Area2D
         if (body is not Player)
             return;
         
-        GD.Print("Energy Orb collected");
+        Global.GameManager.EnergyLeftOverlay.AddEnergy();
         QueueFree();
     }
 }

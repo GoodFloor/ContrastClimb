@@ -7,9 +7,8 @@ namespace ContrastClimb.levels;
 public partial class ParentLevel : Node2D
 {
     [Export] public int StartingEnergy;
-    [Export] public int ScoreTier1;
-    [Export] public int ScoreTier2;
-    [Export] public int ScoreTier3;
+    [Export] public int EnergyLeftOk;
+    [Export] public int EnergyLeftPerfect;
     [Export(PropertyHint.File, "*.ogv")] public string Cutscene;
     
     private CameraPath _cameraPath;

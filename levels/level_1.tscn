@@ -17,9 +17,8 @@ point_count = 2
 [node name="Level_" type="Node2D" unique_id=469552005]
 script = ExtResource("1_5ot28")
 StartingEnergy = 20
-ScoreTier1 = 12
-ScoreTier2 = 10
-ScoreTier3 = 8
+EnergyLeftOk = 8
+EnergyLeftPerfect = 13
 
 [node name="Player" parent="." unique_id=1791503502 instance=ExtResource("2_7d3si")]
 position = Vector2(180, 800)

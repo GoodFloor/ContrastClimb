@@ -31,6 +31,8 @@ loop = false
 [node name="DeathArea" parent="PathFollow" unique_id=2324551 instance=ExtResource("1_b7a4p")]
 position = Vector2(0, 450)
 scale = Vector2(32, 1)
+collision_layer = 31
+collision_mask = 31
 
 [node name="Background" type="ColorRect" parent="PathFollow" unique_id=1969236282]
 z_index = -1
@@ -51,8 +53,8 @@ action = "switch_color"
 
 [node name="CameraSpeedIncreaseArea" type="Area2D" parent="PathFollow" unique_id=50615454]
 position = Vector2(0, -270)
-collision_layer = 15
-collision_mask = 15
+collision_layer = 31
+collision_mask = 31
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow/CameraSpeedIncreaseArea" unique_id=350429195]
@@ -61,8 +63,8 @@ debug_color = Color(0, 0.31243172, 0.49681002, 0.41960785)
 
 [node name="CameraSpeedDecreaseArea" type="Area2D" parent="PathFollow" unique_id=80244263]
 position = Vector2(0, 200)
-collision_layer = 15
-collision_mask = 15
+collision_layer = 31
+collision_mask = 31
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow/CameraSpeedDecreaseArea" unique_id=346910657]
