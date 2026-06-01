@@ -4,7 +4,7 @@ namespace ContrastClimb.utils.ui.settings;
 
 public partial class MusicSlider : HSlider
 {
-    private AudioStreamPlayer2D _musicPlayer;
+    private AudioStreamPlayer _musicPlayer;
     private const float MaxVolume = 32f;
 
     public override void _Ready()
@@ -24,7 +24,7 @@ public partial class MusicSlider : HSlider
     private void SetVolume(float value)
     {
         // If _musicPlayer wasn't assigned yet - get its reference
-        _musicPlayer ??= Global.GameManager.GetNode<AudioStreamPlayer2D>("MusicPlayer");
+        _musicPlayer ??= Global.GameManager.GetNode<AudioStreamPlayer>("MusicPlayer");
 
         if (value < 100f)
             _musicPlayer.VolumeDb = MaxVolume * value / -100f;

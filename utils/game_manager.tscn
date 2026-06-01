@@ -251,11 +251,10 @@ script = ExtResource("11_8i5jn")
 layout_mode = 2
 text = "Back"
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1563401921]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=274549260]
 stream = ExtResource("13_adq2u")
 volume_db = -16.0
 autoplay = true
-max_distance = 20000.0
 
 [connection signal="pressed" from="UIRoot/MainMenu/SettingsButton" to="." method="OpenSettings"]
 [connection signal="pressed" from="UIRoot/LevelSelection/BackButton" to="." method="PauseGame"]

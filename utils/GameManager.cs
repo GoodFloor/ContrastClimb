@@ -32,7 +32,7 @@ public partial class GameManager : Node
     private Sprite2D _winScreenScore;
     public EnergyLeftOverlay EnergyLeftOverlay;
     
-    private AudioStreamPlayer2D _musicPlayer;
+    private AudioStreamPlayer _musicPlayer;
     
     private int _currentLevelId;
     
@@ -50,7 +50,7 @@ public partial class GameManager : Node
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
-        _musicPlayer =  GetNode<AudioStreamPlayer2D>("MusicPlayer");
+        _musicPlayer =  GetNode<AudioStreamPlayer>("MusicPlayer");
         EnergyLeftOverlay = _levelRoot.GetNode<EnergyLeftOverlay>("EnergyLeftOverlay");
         
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
