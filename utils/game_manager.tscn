@@ -256,6 +256,8 @@ stream = ExtResource("13_adq2u")
 volume_db = -16.0
 autoplay = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MusicPlayer" unique_id=626700720]
+
 [connection signal="pressed" from="UIRoot/MainMenu/SettingsButton" to="." method="OpenSettings"]
 [connection signal="pressed" from="UIRoot/LevelSelection/BackButton" to="." method="PauseGame"]
 [connection signal="item_selected" from="UIRoot/SettingsScreen/SteeringRow/SteeringOptionButton" to="UIRoot/SettingsScreen/SteeringRow/SteeringOptionButton" method="OnItemSelected"]
