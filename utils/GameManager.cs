@@ -32,8 +32,6 @@ public partial class GameManager : Node
     private Sprite2D _winScreenScore;
     public EnergyLeftOverlay EnergyLeftOverlay;
     
-    private AudioStreamPlayer _musicPlayer;
-    
     private int _currentLevelId;
     
     public override void _Ready()
@@ -42,15 +40,14 @@ public partial class GameManager : Node
         
         Global.Config = new Config();
         Global.Config.LoadConfig();
-        EmitSignal(SignalName.ConfigLoaded);
         
         Global.Progress = new Progress();
         Global.Progress.LoadProgress();
+        EmitSignal(SignalName.ConfigLoaded);
         
         _levelRoot = GetNode<Node2D>("LevelRoot");
         _cutsceneRoot = GetNode<Node>("CutsceneRoot");
         _uiRoot = GetNode<CanvasLayer>("UIRoot");
-        _musicPlayer =  GetNode<AudioStreamPlayer>("MusicPlayer");
         EnergyLeftOverlay = _levelRoot.GetNode<EnergyLeftOverlay>("EnergyLeftOverlay");
         
         _mainMenu = _uiRoot.GetNode<Control>("MainMenu");
