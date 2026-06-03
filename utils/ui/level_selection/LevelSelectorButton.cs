@@ -7,6 +7,7 @@ public partial class LevelSelectorButton : Button
     private Sprite2D _scoreLabel;
     private int _levelId;
     private int _levelScore;
+    private static Texture2D[]  _scoreTexture;
     
     [Export]
     public int LevelId
@@ -25,7 +26,7 @@ public partial class LevelSelectorButton : Button
         set
         { 
             _levelScore = value;
-            _scoreLabel.Texture = Global.ScoreTexture[_levelScore];
+            _scoreLabel.Texture = _scoreTexture[_levelScore];
         }
     }
 
@@ -35,7 +36,10 @@ public partial class LevelSelectorButton : Button
         
         _scoreLabel = GetNode<Sprite2D>("Score");
         
-        
+        _scoreTexture = [GD.Load<Texture2D>("res://utils/ui/result_stars/sprites/star0.png"), 
+            GD.Load<Texture2D>("res://utils/ui/result_stars/sprites/star1.png"), 
+            GD.Load<Texture2D>("res://utils/ui/result_stars/sprites/star2.png"), 
+            GD.Load<Texture2D>("res://utils/ui/result_stars/sprites/star3.png")];
         
     }
 

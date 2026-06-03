@@ -29,7 +29,7 @@ public partial class GameManager : Node
     private Control _settingsScreen;
     private Control _winScreen;
     private Control _failScreen;
-    private Sprite2D _winScreenScore;
+    private AnimatedSprite2D _winScreenScore;
     public EnergyLeftOverlay EnergyLeftOverlay;
     
     private int _currentLevelId;
@@ -55,14 +55,9 @@ public partial class GameManager : Node
         _settingsScreen = _uiRoot.GetNode<Control>("SettingsScreen");
         _winScreen = _uiRoot.GetNode<Control>("WinScreen");
         _failScreen = _uiRoot.GetNode<Control>("FailScreen");
-        _winScreenScore = _winScreen.GetNode<Sprite2D>("Score");
+        _winScreenScore = _winScreen.GetNode<AnimatedSprite2D>("Score");
         
         _cutsceneTemplate = ResourceLoader.Load<PackedScene>("res://cutscenes/cutscene.tscn");
-
-        Global.ScoreTexture = [GD.Load<Texture2D>("res://utils/ui/stars_0.png"), 
-            GD.Load<Texture2D>("res://utils/ui/stars_1.png"), 
-            GD.Load<Texture2D>("res://utils/ui/stars_2.png"), 
-            GD.Load<Texture2D>("res://utils/ui/stars_3.png")];
         
         PauseGame();
         
@@ -122,7 +117,7 @@ public partial class GameManager : Node
             else if (EnergyLeftOverlay.Value >= _currentInstanceLevel.EnergyLeftOk)
                 score = 2;
             
-            _winScreenScore.Texture = Global.ScoreTexture[score];
+            _winScreenScore.Play($"star{score}");
 
             if (score > Global.Progress.GetLevelScore(_currentLevelId))
             {
