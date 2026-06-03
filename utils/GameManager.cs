@@ -137,6 +137,7 @@ public partial class GameManager : Node
             _levelSelection.UnlockLevel(_currentLevelId);
             Global.Progress.LatestLevelId = _currentLevelId;
             _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/level_{_currentLevelId}.tscn");
+            Global.MusicManager.Play(_currentLevelId);
         }
         else
         {
@@ -175,6 +176,7 @@ public partial class GameManager : Node
     private void LoadNewLevel(string levelName)
     {
         _currentLoadedLevel = ResourceLoader.Load<PackedScene>($"res://levels/{levelName}.tscn");
+        Global.MusicManager.Play(_currentLevelId);
         
         InstantiateLoadedLevel();
     }

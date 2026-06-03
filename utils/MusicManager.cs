@@ -24,8 +24,18 @@ public partial class MusicManager : Node
     private void OnConfigLoaded()
     {
         Volume = Global.Config.Music;
-        
-        // TODO: Load appropriate playback
+    }
+
+    public void Play(int id)
+    {
+        if (id > 5)
+            id = 5;
+        id++;
+
+        var newStream = GD.Load<AudioStreamMP3>($"res://music/The_Abyss_0{id}.mp3");
+
+        _player.Stream = newStream;
+        _player.Play();
     }
     
 }
