@@ -20,8 +20,7 @@ public partial class Cutscene : Control
 
     public void SetSource(string path)
     {
-        var videoStream = new VideoStreamTheora();
-        videoStream.File = path;
+        var videoStream = GD.Load<VideoStreamTheora>(path);
 
         _player.Stream = videoStream;
         _player.Play();
