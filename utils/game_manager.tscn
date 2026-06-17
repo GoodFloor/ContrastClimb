@@ -17,6 +17,20 @@
 [ext_resource type="Script" uid="uid://bp5g57fy1uem1" path="res://utils/ui/EnergyLeftOverlay.cs" id="14_hb3xv"]
 [ext_resource type="PackedScene" uid="uid://du2njfp457v6u" path="res://utils/ui/result_stars/result_stars.tscn" id="16_8jir6"]
 
+[sub_resource type="Gradient" id="Gradient_si2r8"]
+colors = PackedColorArray(1, 0, 0, 0.5019608, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2bj4"]
+gradient = SubResource("Gradient_si2r8")
+width = 32
+
+[sub_resource type="Gradient" id="Gradient_8jir6"]
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 0.5019608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_si2r8"]
+gradient = SubResource("Gradient_8jir6")
+width = 32
+
 [node name="GameManager" type="Node" unique_id=1931892290]
 process_mode = 3
 script = ExtResource("1_58e6k")
@@ -65,14 +79,33 @@ size_flags_vertical = 4
 scale = Vector2(0.08464843, 0.08464843)
 texture = ExtResource("6_si2r8")
 
-[node name="Label" type="Label" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=846554299]
-visible = false
-layout_mode = 2
-text = "Energy left:"
-
 [node name="EnergyLeftLabel" type="Label" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=481445187]
 layout_mode = 2
 text = "00"
+
+[node name="DangerIndicator" type="Control" parent="LevelRoot/EnergyLeftOverlay" unique_id=735835838]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LevelRoot/EnergyLeftOverlay/DangerIndicator" unique_id=521706382]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 800.0
+texture = SubResource("GradientTexture1D_s2bj4")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelRoot/EnergyLeftOverlay/DangerIndicator" unique_id=152297088]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 800.0
+grow_horizontal = 0
+texture = SubResource("GradientTexture1D_si2r8")
 
 [node name="CutsceneRoot" type="CanvasLayer" parent="." unique_id=186782642]
 process_mode = 1
