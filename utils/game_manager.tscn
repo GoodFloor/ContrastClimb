@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://dp5jlxpg6hqvs" path="res://utils/ui/main_menu/ExitButton.cs" id="2_58e6k"]
 [ext_resource type="Script" uid="uid://bcpmtj46d2gps" path="res://utils/LevelRoot.cs" id="2_g2d5c"]
 [ext_resource type="Script" uid="uid://dcm8luj8rklt6" path="res://utils/ui/main_menu/ContinueButton.cs" id="2_xuox5"]
-[ext_resource type="AudioStream" uid="uid://xol3ldclmay3" path="res://music/The_Abyss_06.mp3" id="3_si2r8"]
 [ext_resource type="Script" uid="uid://c5ofplaradvvf" path="res://utils/ui/main_menu/LevelsButton.cs" id="4_1inmq"]
 [ext_resource type="Script" uid="uid://dv38u6anqgr0l" path="res://utils/ui/main_menu/ResetConfig.cs" id="5_xvya0"]
 [ext_resource type="Script" uid="uid://djnqe0f13lny0" path="res://utils/ui/game_over/BackButton.cs" id="6_ds37j"]
+[ext_resource type="Texture2D" uid="uid://b71gkf1l7gi6o" path="res://environment/collectibles/energy_orb/energy.0000.png" id="6_si2r8"]
 [ext_resource type="PackedScene" uid="uid://bxirwj51vyjh7" path="res://utils/ui/level_selection/level_selector_button.tscn" id="7_dpd3l"]
 [ext_resource type="Script" uid="uid://deejsk3obhr03" path="res://utils/ui/level_selection/LevelSelection.cs" id="8_m5by7"]
 [ext_resource type="Script" uid="uid://cu6sp81ikdvyo" path="res://utils/ui/main_menu/ResetProgressButton.cs" id="11_8i5jn"]
@@ -25,7 +25,6 @@ script = ExtResource("1_58e6k")
 script = ExtResource("2_8jir6")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=274549260]
-stream = ExtResource("3_si2r8")
 volume_db = -16.0
 autoplay = true
 
@@ -37,20 +36,37 @@ script = ExtResource("2_g2d5c")
 script = ExtResource("14_hb3xv")
 
 [node name="ColorRect" type="ColorRect" parent="LevelRoot/EnergyLeftOverlay" unique_id=853869273]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -242.0
-offset_bottom = -760.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 34.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 color = Color(0.44313726, 0.44313726, 0.44313726, 0.5019608)
 
 [node name="Display" type="HBoxContainer" parent="LevelRoot/EnergyLeftOverlay" unique_id=202009948]
-offset_right = 111.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
 offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=228964413]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="EnergyIcon" type="Sprite2D" parent="LevelRoot/EnergyLeftOverlay/Display/Control" unique_id=949206109]
+scale = Vector2(0.08464843, 0.08464843)
+texture = ExtResource("6_si2r8")
 
 [node name="Label" type="Label" parent="LevelRoot/EnergyLeftOverlay/Display" unique_id=846554299]
+visible = false
 layout_mode = 2
 text = "Energy left:"
 
@@ -63,6 +79,7 @@ process_mode = 1
 
 [node name="UIRoot" type="CanvasLayer" parent="." unique_id=278079975]
 process_mode = 2
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UIRoot" unique_id=53590242]
 anchors_preset = 15
@@ -106,6 +123,7 @@ text = "Exit"
 script = ExtResource("2_58e6k")
 
 [node name="WinScreen" type="VBoxContainer" parent="UIRoot" unique_id=342444967]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -15,7 +15,7 @@ public partial class LevelSelectorButton : Button
         get => _levelId;
         set
         {
-            Text = $"Level {value}";
+            Text = $"{value}";
             _levelId = value;
         }
     }

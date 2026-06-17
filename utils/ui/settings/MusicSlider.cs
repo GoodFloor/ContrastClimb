@@ -16,7 +16,8 @@ public partial class MusicSlider : HSlider
 
     private void OnConfigLoaded()
     {
-        Value = 100.0 - Global.Config.Music;
+        const float span = MaxVolume - MinVolume;
+        Value = 100 * (Global.Config.Music - MinVolume) / span;
     }
 
     public override void _ValueChanged(double newValue)

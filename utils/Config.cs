@@ -58,7 +58,7 @@ public partial class Config : GodotObject
 
         if (!_configFile.HasSectionKey("preferences", "musicVolume"))
         {
-            _configFile.SetValue("preferences", "musicVolume", 50f);
+            _configFile.SetValue("preferences", "musicVolume", -0.3f);
         }
         
         
