@@ -11,11 +11,12 @@ public partial class EnergyLeftOverlay : CanvasLayer
 
     public int Value
     {
-        get => Convert.ToInt32(_counter.Text);
+        get => _value;
         set
         {
             _counter.Text = value.ToString(); 
             _value = value;
+            _dangerIndicator.Visible = value == 0;
         }
     }
 
@@ -32,22 +33,11 @@ public partial class EnergyLeftOverlay : CanvasLayer
 
     private void OnColorChanged()
     {
-        _value--;
-        _counter.Text = _value.ToString();
-
-        if (_value == 0)
-        {
-            _dangerIndicator.Visible = true;
-        }
+        Value--;
     }
 
     public void AddEnergy(int value = 1)
     {
         Value += value;
-        
-        if (_value > 0)
-        {
-            _dangerIndicator.Visible = false;
-        }
     }
 }
